@@ -2,11 +2,6 @@
 
 namespace Rhyous.StringLibrary.Tests
 {
-    /// <summary>
-    /// Example of String Parameter Value Coverage
-    /// http://www.rhyous.com/2012/05/08/unit-testing-with-parameter-value-coverage-pvc/
-    /// http://www.rhyous.com/2015/05/08/row-tests-or-paramerterized-tests-mstest-csv/
-    /// </summary>
     [TestClass]
     public class TrimAllTests
     {
