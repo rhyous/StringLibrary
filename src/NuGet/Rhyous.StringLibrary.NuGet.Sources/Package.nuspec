@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Rhyous.StringLibrary.Sources</id>
+    <version>1.0.0</version>
+    <title>Rhyous.StringLibrary.Sources</title>
+    <authors>Jared Barneck (Rhyous)</authors>
+    <owners>Jared Barneck (Rhyous)</owners>
+    <description>A string library that includes common string extensions, improvements to Trim, such as middle trim with TrimAll, etc.</description>
+    <releaseNotes></releaseNotes>
+    <summary>A string library including many string extensions.</summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/rhyous/StringLibrary</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/rhyous/StringLibrary/blob/master/src/License.txt</licenseUrl>
+    <copyright>Copyright Jared Barneck (Rhyous Publishing LLC) 2016</copyright>
+    <tags>string extensions trim property wrap middletrim</tags>
+  </metadata>
+  <files>
+    <file src="src\" target="src" />
+    <file src="tools\" target="tools" />
+  </files>
+</package>
