@@ -61,7 +61,10 @@
     <None Include="tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\App_Packages\Rhyous.StringLibrary.1.0.0\" />
+    <Folder Include="src\App_Packages\Rhyous.StringLibrary.Sources.1.0.0\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="exclude.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
