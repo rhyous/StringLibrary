@@ -9,6 +9,19 @@ namespace Rhyous.StringLibrary.Tests
     public class TrimPropertiesTests
     {
         [TestMethod]
+        public void NullObjectDoesNotThrowException()
+        {
+            // Arrange
+            TestObject testObj = null;
+
+            // Act
+            testObj.TrimStringProperties();
+
+            // Assert 
+            // Nothing to assert. If an exception is not thrown, that is enough.
+        }
+
+        [TestMethod]
         public void RootObjectIsTrimmed()
         {
             // Arrange
