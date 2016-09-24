@@ -1,18 +1,21 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Rhyous.StringLibrary
 {
     public static class ListExtensions
     {
-        public static void TrimList(this IList array)
+        public static void TrimList(this IList list, IList<object> objectsBeingTrimmed)
         {
-            for (int i = 0; i < array.Count; i++)
+            objectsBeingTrimmed = objectsBeingTrimmed ?? new List<object>();
+            objectsBeingTrimmed.Add(list);
+            for (int i = 0; i < list.Count; i++)
             {
-                var item = array[i];
+                var item = list[i];
                 if (item != null && item.GetType() == typeof(string))
-                    array[i] = item.ToString().TrimAll();
+                    list[i] = item.ToString().TrimAll();
                 else
-                    item.TrimStringProperties();
+                    item.TrimStringProperties(objectsBeingTrimmed);
             }
         }
     }
