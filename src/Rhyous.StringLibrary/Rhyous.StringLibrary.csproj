@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globalization\GlobalizationStringExtensions.cs" />
     <Compile Include="Trim\Attributes\IgnoreTrim.cs" />
     <Compile Include="Trim\Extensions\TrimDictionaryExtensions.cs" />
     <Compile Include="Trim\Extensions\TrimListExtensions.cs" />
