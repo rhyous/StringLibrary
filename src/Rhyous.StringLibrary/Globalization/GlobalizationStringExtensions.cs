@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace Rhyous.StringLibrary.Diacritics
+namespace Rhyous.StringLibrary
 {
     public static class GlobalizationStringExtensions
     {
