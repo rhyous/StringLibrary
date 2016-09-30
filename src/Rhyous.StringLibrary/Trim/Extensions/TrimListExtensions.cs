@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 
 namespace Rhyous.StringLibrary
-{
-    public static class ListExtensions
+{    /// <summary>
+     /// Extensions for trimming strings in ILists.
+     /// </summary>
+    public static class TrimListExtensions
     {
         public static void TrimList(this IList array)
         {

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace Rhyous.StringLibrary
 {
-    public static class DictionaryExtensions
+    /// <summary>
+    /// Extensions for trimming strings in dictionary values.
+    /// Todo: Trim keys as well as values.
+    /// </summary>
+    public static class TrimDictionaryExtensions
     {
         public static void TrimDictionary(this IDictionary dictionary)
         {

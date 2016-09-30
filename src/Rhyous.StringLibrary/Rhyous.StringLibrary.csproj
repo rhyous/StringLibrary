@@ -41,16 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\IgnoreTrim.cs" />
-    <Compile Include="Extensions\DictionaryExtensions.cs" />
-    <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Extensions\PropertyInfoExtensions.cs" />
-    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Trim\Attributes\IgnoreTrim.cs" />
+    <Compile Include="Trim\Extensions\TrimDictionaryExtensions.cs" />
+    <Compile Include="Trim\Extensions\TrimListExtensions.cs" />
+    <Compile Include="Trim\Extensions\TrimObjectExtensions.cs" />
+    <Compile Include="Trim\Extensions\TrimPropertyInfoExtensions.cs" />
+    <Compile Include="Wrap\WrapStringExtensions.cs" />
+    <Compile Include="Trim\Extensions\TrimTypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Attributes\Trim.cs" />
-    <Compile Include="TrimPropertiesSettings.cs" />
+    <Compile Include="Trim\Extensions\TrimStringExtensions.cs" />
+    <Compile Include="Trim\Attributes\Trim.cs" />
+    <Compile Include="Trim\Settings\TrimPropertiesSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,10 @@ using System.Reflection;
 
 namespace Rhyous.StringLibrary
 {
-    public static class PropertyInfoExtensions
+    /// <summary>
+    /// Extensions for PropertyInfo to help with trimming string properties of any object
+    /// </summary>
+    public static class TrimPropertyInfoExtensions
     {
         public static bool IsTrimmable(this PropertyInfo pi)
         {

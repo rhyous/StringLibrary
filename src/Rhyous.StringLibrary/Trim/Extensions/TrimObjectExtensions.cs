@@ -3,8 +3,14 @@ using System.Collections;
 using System.Reflection;
 
 namespace Rhyous.StringLibrary
-{
-    public static class ObjectExtensions
+{ 
+    /// <summary>
+     /// Extensions for trimming string properties of any object. No matter how big the object,
+     /// how many string properties, or how many sub objects with string roperties, you can trim
+     /// and entire object with one line of code:
+     ///     obj.TrimStringProperties();
+     /// </summary>
+    public static class TrimObjectExtensions
     {
         /// <summary>
         /// Finds any property of type string and trims it, unless that property has the

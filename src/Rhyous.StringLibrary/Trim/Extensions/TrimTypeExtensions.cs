@@ -3,7 +3,10 @@ using System.Linq;
 
 namespace Rhyous.StringLibrary
 {
-    public static class TypeExtensions
+    /// <summary>
+    /// Extensions for Type to help with trimming string properties of any object
+    /// </summary>
+    public static class TrimTypeExtensions
     {
         public static bool IsTrimmable(this Type type)
         {
