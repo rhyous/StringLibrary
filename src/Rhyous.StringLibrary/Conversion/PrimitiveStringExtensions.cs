@@ -28,6 +28,11 @@ namespace Rhyous.StringLibrary
             return TryParse(s, bool.TryParse, defaultValue);
         }
 
+        public static DateTime ToDate(this string s, DateTime defaultValue = default(DateTime))
+        {
+            return TryParse(s, DateTime.TryParse, defaultValue);
+        }
+
         public static decimal ToDecimal(this string s, decimal defaultValue = 0.0M)
         {
             return TryParse(s, decimal.TryParse, defaultValue);
