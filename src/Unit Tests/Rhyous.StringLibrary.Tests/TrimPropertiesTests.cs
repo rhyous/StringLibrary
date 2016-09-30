@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace Rhyous.StringLibrary.Tests
@@ -8,41 +6,17 @@ namespace Rhyous.StringLibrary.Tests
     [TestClass]
     public class TrimPropertiesTests
     {
-        public class TestObject
+        [TestMethod]
+        public void NullObjectDoesNotThrowException()
         {
-            public int Id { get; set; }
-            public string String1 { get; set; }
-            public SubTestObject Sub { get; set; }
-        }
+            // Arrange
+            TestObject testObj = null;
 
-        public class SubTestObject
-        {
-            public int Id { get; set; }
-            public string String2 { get; set; }
-        }
+            // Act
+            testObj.TrimStringProperties();
 
-        public class Getter
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Get { get { return " This cannot be set and cannot be trimmed. "; } }
-        }
-
-        public class ObjectList : List<object>
-        {
-            public string Name { get; set; }
-        }
-
-        public class ParentOfDictionary
-        {
-            public string Name { get; set; }
-            public Dictionary<string, object> Map { get; set; } = new Dictionary<string, object>();
-        }
-
-        public class ObjectProperties
-        {
-            public string Name { get; set; }
-            public object StringAsObject { get; set; }
+            // Assert 
+            // Nothing to assert. If an exception is not thrown, that is enough.
         }
 
         [TestMethod]
@@ -87,6 +61,35 @@ namespace Rhyous.StringLibrary.Tests
         }
 
         [TestMethod]
+        public void ItemsInArrayAreTrimmed()
+        {
+            // Arrange
+            var testObj = new string[] { " Trim me ", " Trim me \t too. " };
+
+            // Act
+            testObj.TrimStringProperties();
+
+            // Assert
+            Assert.AreEqual("Trim me", testObj[0]);
+            Assert.AreEqual("Trim me too.", testObj[1]);
+        }
+
+        [TestMethod]
+        public void ItemsInArrayPropertyAreTrimmed()
+        {
+            // Arrange
+            var testObj = new ContainsStringArray { Name = " Array Name " };
+            testObj.Array = new string[] { " Trim me " };
+
+            // Act
+            testObj.TrimStringProperties();
+
+            // Assert
+            Assert.AreEqual("Array Name", testObj.Name);
+            Assert.AreEqual("Trim me", testObj.Array[0]);
+        }
+
+        [TestMethod]
         public void StringPropertyOfGenericListIsTrimmed()
         {
             // Arrange
@@ -98,7 +101,7 @@ namespace Rhyous.StringLibrary.Tests
             // Assert - doesn't throw exception and regular stuff is trimmed
             Assert.AreEqual("List Name", testObj.Name);
         }
-
+        
         [TestMethod]
         public void ItemInGenericListIsTrimmed()
         {

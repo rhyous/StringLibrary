@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Rhyous.StringLibrary
@@ -17,17 +17,18 @@ namespace Rhyous.StringLibrary
         /// IgnoreTrimAttribute applied.
         /// </summary>
         /// <param name="obj"></param>
-        public static void TrimStringProperties(this object obj)
+        public static void TrimStringProperties(this object obj, IList<object> objectsBeingTrimmed = null)
         {
+            if (obj == null || obj.IsAlreadyBeingTrimmed(objectsBeingTrimmed))
+                return;
             var type = obj.GetType();
             if (!type.IsTrimmable() || type == typeof(string)) // We can't trim a string if it is the root object as a string is immutable
                 return;
-
-            if (type.IsArray)
-                obj.TrimArray();
+            objectsBeingTrimmed = objectsBeingTrimmed ?? new List<object>();
+            objectsBeingTrimmed.Add(obj);
 
             if (obj.IsSupportedGeneric())
-                obj.TrimGeneric();
+                obj.TrimGeneric(objectsBeingTrimmed);
 
             var properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
             foreach (var prop in properties)
@@ -38,7 +39,7 @@ namespace Rhyous.StringLibrary
                 }
                 if (prop.PropertyType == typeof(object))
                 {
-                    obj.TrimObject(prop);
+                    obj.TrimObject(prop, objectsBeingTrimmed);
                     continue;
                 }
                 if (prop.PropertyType == typeof(string))
@@ -49,45 +50,42 @@ namespace Rhyous.StringLibrary
                 if (prop.PropertyType.IsSupportedGeneric())
                 {
                     var generic = prop.GetValue(obj, null);
-                    generic.TrimGeneric();
+                    generic.TrimGeneric(objectsBeingTrimmed);
                     continue;
                 }
-
-                prop.GetValue(obj, null).TrimStringProperties();
+                var value = prop.GetValue(obj, null);
+                if (value != null)
+                {
+                    value.TrimStringProperties(objectsBeingTrimmed);
+                }
             }
         }
 
-        public static void TrimArray(this object obj)
-        {
-            var array = obj as Array;
-            if (array != null & array.Length == 0)
-                return;
-            array.TrimList();
-        }
-
-        public static void TrimGeneric(this object obj)
+        public static void TrimGeneric(this object obj, IList<object> objectsBeingTrimmed = null)
         {
             var dictionary = obj as IDictionary;
             if (dictionary != null)
             {
-                dictionary.TrimDictionary();
+                dictionary.TrimDictionary(objectsBeingTrimmed);
                 return;
             }
             var list = obj as IList;
             if (list != null)
             {
-                list.TrimList();
+                list.TrimList(objectsBeingTrimmed);
                 return;
             }
-        }        
+        }
 
-        public static void TrimObject(this object obj, PropertyInfo prop)
+        public static void TrimObject(this object obj, PropertyInfo prop, IList<object> objectsBeingTrimmed = null)
         {
             var value = prop.GetValue(obj, null);
             if (value.GetType() == typeof(string))
                 obj.TrimString(prop);
             else
-                value.TrimStringProperties();
+            {
+                value.TrimStringProperties(objectsBeingTrimmed);
+            }
         }
 
         public static void TrimString(this object obj, PropertyInfo stringProperty)
@@ -101,6 +99,11 @@ namespace Rhyous.StringLibrary
         internal static bool IsSupportedGeneric(this object o)
         {
             return o.GetType().IsSupportedGeneric();
+        }
+
+        internal static bool IsAlreadyBeingTrimmed(this object obj, IList<object> objectsBeingTrimmed)
+        {
+            return (objectsBeingTrimmed != null && objectsBeingTrimmed.Count > 0 && objectsBeingTrimmed.Contains(obj));
         }
 
     }

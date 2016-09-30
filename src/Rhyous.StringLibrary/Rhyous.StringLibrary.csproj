@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conversion\PrimitiveStringExtensions.cs" />
     <Compile Include="Globalization\GlobalizationStringExtensions.cs" />
     <Compile Include="Conversion\StreamStringExtensions.cs" />
+    <Compile Include="Comparison\StringComparisonExtensions.cs" />
     <Compile Include="Trim\Attributes\IgnoreTrim.cs" />
     <Compile Include="Trim\Extensions\TrimDictionaryExtensions.cs" />
     <Compile Include="Trim\Extensions\TrimListExtensions.cs" />
