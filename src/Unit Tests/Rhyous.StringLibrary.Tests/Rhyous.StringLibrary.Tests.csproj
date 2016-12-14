@@ -53,10 +53,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Conversion\PrimitiveStringExtensionsTests.cs" />
     <Compile Include="TestObjects\TestObject.cs" />
-    <Compile Include="TrimAllTests.cs" />
+    <Compile Include="Trim\Extensions\TrimAllTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrimPropertiesTests.cs" />
+    <Compile Include="Trim\Extensions\TrimPropertiesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\ParameterValueStrings.xml">
@@ -68,6 +69,11 @@
       <Project>{fb7b5256-03fe-4c28-b8fb-81632981658b}</Project>
       <Name>Rhyous.StringLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\PrimitiveConversions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
