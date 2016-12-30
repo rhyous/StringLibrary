@@ -195,4 +195,22 @@
     <x:Expected>0</x:Expected>
     <x:Message></x:Message>
   </x:Row>
+  <x:Row>
+    <x:String>0BF5EBA3-3823-481D-927D-F4C31968FAF7</x:String>
+    <x:Type>System.Guid</x:Type>
+    <x:Expected>0bf5eba3-3823-481d-927d-f4c31968faf7</x:Expected>
+    <x:Message></x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>{0BF5EBA3-3823-481D-927D-F4C31968FAF7}</x:String>
+    <x:Type>System.Guid</x:Type>
+    <x:Expected>0bf5eba3-3823-481d-927d-f4c31968faf7</x:Expected>
+    <x:Message></x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>0BF5EBA3-3823-481D-927D-F4C31968FAF7</x:String>
+    <x:Type>System.Guid</x:Type>
+    <x:Expected>0bf5eba3-3823-481d-927d-f4c31968faf7</x:Expected>
+    <x:Message></x:Message>
+  </x:Row>
 </Rows>

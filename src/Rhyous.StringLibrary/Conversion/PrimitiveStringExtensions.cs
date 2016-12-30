@@ -7,7 +7,7 @@ namespace Rhyous.StringLibrary
     public static class PrimitiveStringExtensions
     {
         public static T To<T>(this string s, T defaultValue = default(T))
-            where T : struct, IComparable, IConvertible, IComparable<T>, IEquatable<T>
+            where T : struct, IComparable, IComparable<T>, IEquatable<T>
         {
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             try { return (T)converter.ConvertFromString(null, CultureInfo.InvariantCulture, s); }
@@ -75,6 +75,11 @@ namespace Rhyous.StringLibrary
         }
 
         public static ushort ToUShort(this string s, ushort defaultValue = 0)
+        {
+            return To(s, defaultValue);
+        }
+
+        public static Guid ToGuid(this string s, Guid defaultValue = default(Guid))
         {
             return To(s, defaultValue);
         }
