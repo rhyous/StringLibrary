@@ -7,7 +7,7 @@ namespace Rhyous.StringLibrary
     public static class PrimitiveStringExtensions
     {
         public static T To<T>(this string s, T defaultValue = default(T))
-            where T : struct, IComparable, IComparable<T>, IEquatable<T>
+            where T : IComparable, IComparable<T>, IEquatable<T>
         {
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             try { return (T)converter.ConvertFromString(null, CultureInfo.InvariantCulture, s); }
