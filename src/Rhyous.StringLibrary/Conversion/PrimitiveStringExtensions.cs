@@ -14,6 +14,13 @@ namespace Rhyous.StringLibrary
             catch { return defaultValue; }
         }
 
+        public static object ToType(this string s, Type type, object defaultValue = null)
+        {
+            var mi = typeof(PrimitiveStringExtensions).GetMethod("To");
+            var method = mi.MakeGenericMethod(type);
+            return method.Invoke(null, new object[] { s, defaultValue ?? Type.Missing });
+        }
+
         public static byte ToByte(this string s, byte defaultValue = 0)
         {
             return To(s, defaultValue);

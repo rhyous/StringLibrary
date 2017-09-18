@@ -9,9 +9,12 @@ namespace Rhyous.StringLibrary.Tests.Comparison
     {
         public TestContext TestContext { get; set; }
 
+        /// <summary>
+        /// Tests both the ToGeneric and the ToType methods
+        /// </summary>
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", @"Data\PrimitiveConversions.xml", "Row", DataAccessMethod.Sequential)]
-        public void ToGenericTest()
+        public void ToGenericAndToTypeTest()
         {
             // Arrange
             string s = TestContext.DataRow[0].ToString();
@@ -22,9 +25,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
                 expected = s;
 
             // Act
-            MethodInfo mi = typeof(PrimitiveStringExtensions).GetMethod("To");
-            MethodInfo method = mi.MakeGenericMethod(type);
-            var actual = method.Invoke(null, new object[] { s, null });
+            var actual = s.ToType(type);
 
             // Assert
             Assert.AreEqual(type, actual.GetType());
