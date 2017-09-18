@@ -53,13 +53,16 @@
     <None Include="NuGetSetup.ps1" />
     <None Include="NuGet.exe" />
     <None Include="NuGet.config" />
-    <None Include="Package.nuspec" />
+    <None Include="Package.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="tools\init.ps1" />
     <None Include="tools\install.ps1" />
     <None Include="tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\net40-client\" />
+    <Folder Include="lib\net461\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -84,6 +87,10 @@
   <PropertyGroup>
     <PreBuildEvent>SET Project=Rhyous.StringLibrary
 copy /Y "$(SolutionDir)..\%25Project%25\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net40-client\"
-copy /Y "$(SolutionDir)..\%25Project%25\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net40-client\"</PreBuildEvent>
+copy /Y "$(SolutionDir)..\%25Project%25\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net40-client\"
+
+SET Project2=Rhyous.StringLibrary.DotNet461
+copy /Y "$(SolutionDir)..\%25Project2%25\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net461\"
+copy /Y "$(SolutionDir)..\%25Project2%25\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net461\"</PreBuildEvent>
   </PropertyGroup>
 </Project>

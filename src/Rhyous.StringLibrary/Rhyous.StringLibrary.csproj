@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conversion\PrimitiveStringExtensions.cs" />
+    <Compile Include="Expression\PropertyNameLambdaExtensions.cs" />
     <Compile Include="Globalization\GlobalizationStringExtensions.cs" />
     <Compile Include="Conversion\StreamStringExtensions.cs" />
     <Compile Include="Comparison\StringComparisonExtensions.cs" />

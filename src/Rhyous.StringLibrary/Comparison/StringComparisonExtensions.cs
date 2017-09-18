@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Rhyous.StringLibrary.Search
+namespace Rhyous.StringLibrary
 {
     public static class StringComparisonExtensions
     {
