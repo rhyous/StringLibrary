@@ -55,10 +55,11 @@ namespace Rhyous.StringLibrary
             var lambdaMethod = typeof(PropertyNameLambdaExtensions).GetMethods().Where(m => m.Name == "ToLambda" && m.IsGenericMethod && m.GetParameters().Length == 4 && m.GetParameters()[1].ParameterType.IsGenericParameter).FirstOrDefault();
             lambdaMethod = lambdaMethod.MakeGenericMethod(typeof(T), type);
             var newParams = new object[4];
-            parameters.CopyTo(newParams, 0);
-            var missingParams = 4 - parameters.Length;
+            newParams[0] = propertyName;
+            parameters.CopyTo(newParams, 1);
+            var missingParams = 3 - parameters.Length;
             while (missingParams > 0)
-                newParams[3 - missingParams--] = Type.Missing;
+                newParams[newParams.Length - 1 - missingParams--] = Type.Missing;
             var expression = lambdaMethod.Invoke(null, newParams);
             return expression as Expression<Func<T, bool>>;
         }
