@@ -31,15 +31,25 @@ namespace Rhyous.StringLibrary
         /// <typeparam name="TInput">The type of the specified input value.</typeparam>
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="value">The value to compare.</param>
-        /// <param name="methodName">Equals is the default. Any valid method could be used. For example, if TInput is string, StartsWith or EndsWith, etc., would be options.</param>
+        /// <param name="methodName">The method. It can be a method or it can be a any OData filter operator. The default is eq. Any valid method could be used. For example, if TInput is string, StartsWith or EndsWith, etc., would be options.</param>
         /// <returns>An Expression that when called should return true or false whether the property value equals the specified value.</returns>
-        public static Expression<Func<T, bool>> ToLambda<T, TInput>(this string propertyName, TInput value, string methodName = "Equals", bool not = false)
+        public static Expression<Func<T, bool>> ToLambda<T, TInput>(this string propertyName, TInput value, string methodName = "eq", bool not = false)
         {
             ParameterExpression parameter = Expression.Parameter(typeof(T), "e");
-            Expression property = Expression.Property(parameter, propertyName);
-            Expression target = Expression.Constant(value);
-            Expression method = Expression.Call(property, methodName, null, target);
-            return Expression.Lambda<Func<T, bool>>(not ? Expression.Not(method) : method, parameter);
+            Expression left = Expression.Property(parameter, propertyName);
+            Expression right = Expression.Constant(value);
+            Expression method = null;
+            Func<Expression, Expression, Expression> func;
+            if (ExpressionMethodDictionary.Instance.TryGetValue(methodName, out func))
+            {
+                method = func.Invoke(left, right);
+            }
+            else
+            {
+                var methodInfo = typeof(TInput).GetMethod(methodName, new[] { typeof(TInput) });
+                method = Expression.Call(left, methodInfo, right);
+            }
+            return Expression.Lambda<Func<T, bool>>(not? Expression.Not(method) : method, parameter);
         }
 
         /// <summary>
@@ -59,7 +69,7 @@ namespace Rhyous.StringLibrary
             parameters.CopyTo(newParams, 1);
             var missingParams = 3 - parameters.Length;
             while (missingParams > 0)
-                newParams[newParams.Length - 1 - missingParams--] = Type.Missing;
+                newParams[newParams.Length - missingParams--] = Type.Missing;
             var expression = lambdaMethod.Invoke(null, newParams);
             return expression as Expression<Func<T, bool>>;
         }

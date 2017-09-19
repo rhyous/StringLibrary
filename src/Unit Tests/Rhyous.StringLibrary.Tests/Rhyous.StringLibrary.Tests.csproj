@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Conversion\PrimitiveStringExtensionsTests.cs" />
+    <Compile Include="Expression\PropertyNameLambdaExtensionsTests.cs" />
     <Compile Include="TestObjects\TestObject.cs" />
     <Compile Include="Trim\Extensions\TrimAllTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,15 +66,20 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Rhyous.StringLibrary\Rhyous.StringLibrary.csproj">
-      <Project>{fb7b5256-03fe-4c28-b8fb-81632981658b}</Project>
-      <Name>Rhyous.StringLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Data\PrimitiveConversions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\LambdaStrings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Rhyous.StringLibrary.DotNet461\Rhyous.StringLibrary.DotNet461.csproj">
+      <Project>{a7e8f063-2e00-484a-ae0a-8c17a8ab52ac}</Project>
+      <Name>Rhyous.StringLibrary.DotNet461</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

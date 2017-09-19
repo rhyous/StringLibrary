@@ -85,6 +85,7 @@
     <Compile Include="..\Rhyous.StringLibrary\Wrap\WrapStringExtensions.cs">
       <Link>Wrap\WrapStringExtensions.cs</Link>
     </Compile>
+    <Compile Include="Expression\ExpressionMethodDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -13,11 +13,15 @@ namespace Rhyous.StringLibrary
             try { return (T)converter.ConvertFromString(null, CultureInfo.InvariantCulture, s); }
             catch { return defaultValue; }
         }
-
+        
         public static object ToType(this string s, Type type, object defaultValue = null)
         {
             var mi = typeof(PrimitiveStringExtensions).GetMethod("To");
             var method = mi.MakeGenericMethod(type);
+            // Check if it is DateTime to handle this critical .NET bug
+            // https://connect.microsoft.com/VisualStudio/feedback/details/733995/datetime-default-parameter-value-throws-formatexception-at-runtime
+            if (type == typeof(DateTime))
+                defaultValue = DateTime.MinValue;
             return method.Invoke(null, new object[] { s, defaultValue ?? Type.Missing });
         }
 

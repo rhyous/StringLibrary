@@ -18,8 +18,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
         {
             // Arrange
             string s = TestContext.DataRow[0].ToString();
-            string strType = TestContext.DataRow[1].ToString();
-            var type = Type.GetType(strType);
+            var type = Type.GetType(TestContext.DataRow[1].ToString());
             string expected = TestContext.DataRow[2].ToString();
             if (string.IsNullOrWhiteSpace(expected))
                 expected = s;
@@ -31,5 +30,21 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.AreEqual(type, actual.GetType());
             Assert.AreEqual(expected, actual.ToString());
         }
+
+        [TestMethod]
+        public void ToDateTimeTest()
+        {
+            // Arrange
+            string s = "01/01/2017";
+            var expected = new DateTime(2017,1,1);
+
+            // Act
+            var actual = s.ToDate();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 }
