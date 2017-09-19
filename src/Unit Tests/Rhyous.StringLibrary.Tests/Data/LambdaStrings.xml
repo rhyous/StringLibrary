@@ -177,7 +177,7 @@
     <x:ExpectedResult>true</x:ExpectedResult>
     <x:Message>Id is 1 which is less than or equal to 1</x:Message>
   </x:Row>
-  <!--String -->
+  <!--String equals -->
   <x:Row>
     <x:Property>Name</x:Property>
     <x:Value>ABC</x:Value>
@@ -194,6 +194,25 @@
     <x:Method>eq</x:Method>
     <x:ExpectedExpression>e => (e.Name == "DEF")</x:ExpectedExpression>
     <x:ExpectedResult>false</x:ExpectedResult>
+    <x:Message>Name is "ABC" and should not equal value "DEF".</x:Message>
+  </x:Row>
+  <!--String not equals -->
+  <x:Row>
+    <x:Property>Name</x:Property>
+    <x:Value>ABC</x:Value>
+    <x:Type>System.String</x:Type>
+    <x:Method>ne</x:Method>
+    <x:ExpectedExpression>e => (e.Name != "ABC")</x:ExpectedExpression>
+    <x:ExpectedResult>false</x:ExpectedResult>
+    <x:Message>Name is "ABC" and should equal value "ABC".</x:Message>
+  </x:Row>
+  <x:Row>
+    <x:Property>Name</x:Property>
+    <x:Value>DEF</x:Value>
+    <x:Type>System.String</x:Type>
+    <x:Method>ne</x:Method>
+    <x:ExpectedExpression>e => (e.Name != "DEF")</x:ExpectedExpression>
+    <x:ExpectedResult>true</x:ExpectedResult>
     <x:Message>Name is "ABC" and should not equal value "DEF".</x:Message>
   </x:Row>
   <!--DateTime -->
