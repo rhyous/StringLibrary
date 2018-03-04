@@ -4,3 +4,5 @@
 \Properties\
 .csproj
 .settings
+.projitems
+.shproj

@@ -1,33 +1,85 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary", "Rhyous.StringLibrary\Rhyous.StringLibrary.csproj", "{FB7B5256-03FE-4C28-B8FB-81632981658B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Tests", "Unit Tests\Rhyous.StringLibrary.Tests\Rhyous.StringLibrary.Tests.csproj", "{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet", "NuGet\Rhyous.StringLibrary.NuGet\Rhyous.StringLibrary.NuGet.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet.Sources", "NuGet\Rhyous.StringLibrary.NuGet.Sources\Rhyous.StringLibrary.NuGet.Sources.csproj", "{8A44B2FA-517D-4DC0-AB3D-2608810B684E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rhyous.StringLibrary.Shared", "Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.shproj", "{ED6813B0-F5A3-4FB2-A66D-DBF1E35F50E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Net40-client", "Rhyous.StringLibrary.Net40-client\Rhyous.StringLibrary.Net40-client.csproj", "{FB7B5256-03FE-4C28-B8FB-81632981658B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary.NetStandard2.0", "Rhyous.StringLibrary.NetStandard2.0\Rhyous.StringLibrary.NetStandard2.0.csproj", "{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rhyous.StringLibrary.Tests.Shared", "Unit Tests\Rhyous.StringLibrary.Tests.Shared\Rhyous.StringLibrary.Tests.Shared.shproj", "{8FDD58F7-0C6F-428D-BD8B-B8B90672560D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Tests.Net40-client", "Unit Tests\Rhyous.StringLibrary.Tests.Net40-client\Rhyous.StringLibrary.Tests.Net40-client.csproj", "{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary.Tests.NetStandard2.0", "Unit Tests\Rhyous.StringLibrary.Tests.NetStandard2.0\Rhyous.StringLibrary.Tests.NetStandard2.0.csproj", "{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Net461", "Rhyous.StringLibrary.Net461\Rhyous.StringLibrary.Net461.csproj", "{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Tests.Net461", "Unit Tests\Rhyous.StringLibrary.Tests.Net461\Rhyous.StringLibrary.Tests.Net461.csproj", "{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Unit Tests\Rhyous.StringLibrary.Tests.Shared\Rhyous.StringLibrary.Tests.Shared.projitems*{195aa2cd-a4ed-4346-b2e1-e70c977f65df}*SharedItemsImports = 4
+		Unit Tests\Rhyous.StringLibrary.Tests.Shared\Rhyous.StringLibrary.Tests.Shared.projitems*{8fdd58f7-0c6f-428d-bd8b-b8b90672560d}*SharedItemsImports = 13
+		Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.projitems*{a7e8f063-2e00-484a-ae0a-8c17a8ab52ac}*SharedItemsImports = 4
+		Unit Tests\Rhyous.StringLibrary.Tests.Shared\Rhyous.StringLibrary.Tests.Shared.projitems*{c4448ae4-3ac0-4b89-a9b1-2df93409d5a9}*SharedItemsImports = 4
+		Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.projitems*{ed6813b0-f5a3-4fb2-a66d-dbf1e35f50e0}*SharedItemsImports = 13
+		Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.projitems*{fb7b5256-03fe-4c28-b8fb-81632981658b}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A44B2FA-517D-4DC0-AB3D-2608810B684E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A44B2FA-517D-4DC0-AB3D-2608810B684E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7B5256-03FE-4C28-B8FB-81632981658B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB7B5256-03FE-4C28-B8FB-81632981658B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7B5256-03FE-4C28-B8FB-81632981658B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB7B5256-03FE-4C28-B8FB-81632981658B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}
+		{8A44B2FA-517D-4DC0-AB3D-2608810B684E} = {ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}
+		{8FDD58F7-0C6F-428D-BD8B-B8B90672560D} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
+		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
+		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68DC9A02-6A49-497C-9D08-8983A3E53F68}
 	EndGlobalSection
 EndGlobal

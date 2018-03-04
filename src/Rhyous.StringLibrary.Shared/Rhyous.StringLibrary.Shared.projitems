@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ed6813b0-f5a3-4fb2-a66d-dbf1e35f50e0</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Rhyous.StringLibrary.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Comparison\StringComparisonExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Conversion\StreamStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Expression\ExpressionMethodDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Globalization\GlobalizationStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\IgnoreTrim.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\Trim.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimDictionaryExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimListExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimObjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimPropertyInfoExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimTypeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Settings\TrimPropertiesSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrap\WrapStringExtensions.cs" />
+  </ItemGroup>
+</Project>

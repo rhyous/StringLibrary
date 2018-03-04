@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Rhyous.StringLibrary</PackageId>
+    <Authors>Jared Barneck</Authors>
+    <Company>Rhyous Publishing LLC</Company>
+    <Product>Rhyous.StringLibrary</Product>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.1</Version>
+    <AssemblyName>Rhyous.StringLibrary</AssemblyName>
+    <RootNamespace>Rhyous.StringLibrary</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.projitems" Label="Shared" />
+
+</Project>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rhyous.StringLibrary.NuGet</RootNamespace>
     <AssemblyName>Rhyous.StringLibrary.NuGet</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -63,6 +63,7 @@
   <ItemGroup>
     <Folder Include="lib\net40-client\" />
     <Folder Include="lib\net461\" />
+    <Folder Include="lib\netstandard2.0\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -86,11 +87,12 @@
   </Target>
   <PropertyGroup>
     <PreBuildEvent>SET Project=Rhyous.StringLibrary
-copy /Y "$(SolutionDir)..\%25Project%25\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net40-client\"
-copy /Y "$(SolutionDir)..\%25Project%25\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net40-client\"
-
-SET Project2=Rhyous.StringLibrary.DotNet461
-copy /Y "$(SolutionDir)..\%25Project2%25\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net461\"
-copy /Y "$(SolutionDir)..\%25Project2%25\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net461\"</PreBuildEvent>
+copy /Y "$(SolutionDir)%25Project%25.net40-client\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net40-client\"
+REM copy /Y "$(SolutionDir)%25Project%25.net40-client\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net40-client\"
+copy /Y "$(SolutionDir)%25Project%25.NetStandard2.0\$(OutDir)netstandard2.0\%25Project%25.dll" "$(ProjectDir)lib\\netstandard2.0\"
+REM copy /Y "$(SolutionDir)%25Project%25.NetStandard2.0\$(OutDir)netstandard2.0\%25Project%25.pdb" "$(ProjectDir)lib\netstandard2.0\"
+copy /Y "$(SolutionDir)%25Project%25.Net461\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net461\"
+REM copy /Y "$(SolutionDir)%25Project%25.Net461\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net461\"
+</PreBuildEvent>
   </PropertyGroup>
 </Project>
