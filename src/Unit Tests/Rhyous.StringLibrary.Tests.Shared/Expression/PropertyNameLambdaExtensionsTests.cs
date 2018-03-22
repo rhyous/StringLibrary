@@ -12,7 +12,6 @@ namespace Rhyous.StringLibrary.Tests.Expression
 
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", @"Data\LambdaStrings.xml", "Row", DataAccessMethod.Sequential)]
-
         public void TestToLambdaTypeParams()
         {
             // Arrange

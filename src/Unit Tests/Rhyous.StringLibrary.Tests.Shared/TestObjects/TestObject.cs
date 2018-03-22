@@ -44,4 +44,12 @@ namespace Rhyous.StringLibrary.Tests
         public string Name { get; set; }
         public object StringAsObject { get; set; }
     }
+
+    public enum TestEnum
+    {
+        Test1,
+        Test2,
+        Test3,
+        Test4
+    }
 }

@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Comparison\StringComparisonExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\StreamStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enum\StringEnumExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\ExpressionMethodDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globalization\GlobalizationStringExtensions.cs" />

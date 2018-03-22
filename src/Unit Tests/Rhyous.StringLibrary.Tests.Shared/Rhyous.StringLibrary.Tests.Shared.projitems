@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensionsTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enum\StringEnumExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestObjects\TestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimAllTests.cs" />
