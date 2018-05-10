@@ -1,5 +1,6 @@
 ﻿#if NET40
-# else
+#elif NETCOREAPP2_0
+#else
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

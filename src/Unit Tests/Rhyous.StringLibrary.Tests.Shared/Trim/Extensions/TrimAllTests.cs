@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#if NETCOREAPP2_0
+#else
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Rhyous.StringLibrary.Tests
 {
@@ -25,3 +27,4 @@ namespace Rhyous.StringLibrary.Tests
         }
     }
 }
+#endif

@@ -21,11 +21,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Rhyous.StringLibrary.Tests.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Tests.Net40-client", "Unit Tests\Rhyous.StringLibrary.Tests.Net40-client\Rhyous.StringLibrary.Tests.Net40-client.csproj", "{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary.Tests.NetStandard2.0", "Unit Tests\Rhyous.StringLibrary.Tests.NetStandard2.0\Rhyous.StringLibrary.Tests.NetStandard2.0.csproj", "{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Net461", "Rhyous.StringLibrary.Net461\Rhyous.StringLibrary.Net461.csproj", "{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.Tests.Net461", "Unit Tests\Rhyous.StringLibrary.Tests.Net461\Rhyous.StringLibrary.Tests.Net461.csproj", "{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary.Tests.NetCore2.0", "Unit Tests\Rhyous.StringLibrary.Tests.NetCore2.0\Rhyous.StringLibrary.Tests.NetCore2.0.csproj", "{F6F70855-AFDC-41C9-A4A7-705CF8127513}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -57,8 +57,6 @@ Global
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,6 +65,10 @@ Global
 		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6F70855-AFDC-41C9-A4A7-705CF8127513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6F70855-AFDC-41C9-A4A7-705CF8127513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6F70855-AFDC-41C9-A4A7-705CF8127513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6F70855-AFDC-41C9-A4A7-705CF8127513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,8 +78,8 @@ Global
 		{8A44B2FA-517D-4DC0-AB3D-2608810B684E} = {ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}
 		{8FDD58F7-0C6F-428D-BD8B-B8B90672560D} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
 		{195AA2CD-A4ED-4346-B2E1-E70C977F65DF} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
-		{517929C3-2AE6-4C55-93F0-0E68B28EB3CE} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
 		{C4448AE4-3AC0-4B89-A9B1-2DF93409D5A9} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
+		{F6F70855-AFDC-41C9-A4A7-705CF8127513} = {E981EB5C-7D9B-475A-8E96-CC1AD412D5CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68DC9A02-6A49-497C-9D08-8983A3E53F68}
