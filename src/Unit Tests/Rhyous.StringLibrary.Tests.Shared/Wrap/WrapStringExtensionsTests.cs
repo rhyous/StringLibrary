@@ -6,91 +6,99 @@ namespace Rhyous.StringLibrary.Tests.Shared.Wrap
     public class WrapStringExtensionsTests
     {
         [TestMethod]
-        public void IsQuotedTrueSingleTest()
-        {
-            Assert.IsTrue("'QuotedString'".IsQuoted());
-        }
-
-        [TestMethod]
-        public void IsQuotedTrueDoubleTest()
-        {
-            Assert.IsTrue("\"QuotedString\"".IsQuoted());
-        }
-
-        [TestMethod]
-        public void UnquoteSingleTest()
+        public void UnwrapQuotes()
         {
             // Arrange
-            var str = "'some string'";
-            var expected = "some string";
+            string str = "''''";
+            var expected = "''";
 
             // Act
-            var actual = str.Unquote();
+            var actual = str.Unwrap("'");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void UnquoteDoubleTest()
+        public void UnwrapDoublePound()
         {
             // Arrange
-            var str = "\"some string\"";
-            var expected = "some string";
+            string str = "##SomeText##";
+            var expected = "SomeText";
 
             // Act
-            var actual = str.Unquote();
+            var actual = str.Unwrap("##");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void UnquoteNoQuotesDoesNothingTest()
+        public void UnwrapDoublePound_NothingUnwraps()
         {
             // Arrange
-            var str = "some string";
-            var expected = "some string";
+            string str = "###";
+            var expected = "###";
 
             // Act
-            var actual = str.Unquote();
+            var actual = str.Unwrap("##");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void QuoteTest()
+        public void UnwrapBrackets()
         {
             // Arrange
-            var str = "some string";
-            var expected = "\"some string\"";
+            string str = "<mystring>";
+            var expected = "mystring";
 
             // Act
-            var actual = str.Quote();
+            var actual = str.Unwrap("'");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void QuoteSingleTest()
+        public void UnwrapBracketsToEmptyString()
         {
             // Arrange
-            var str = "some string";
-            var expected = "'some string'";
+            string str = "<>";
+            var expected = "";
 
             // Act
-            var actual = str.Quote('\'');
+            var actual = str.Unwrap("'");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void QuoteAlreadyQuotedTest()
+        public void UnwrapBracketsOneSideString()
         {
             // Arrange
-            var str = "\"some string\"";
-            var expected = "\"some string\"";
+            string str = "<";
+            var expected = "<";
 
             // Act
-            var actual = str.Quote();
+            var actual = str.Unwrap("'");
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void UnwrapXml()
+        {
+            // Arrange
+            string str = "<node>value</node>";
+            var expected = "value";
+
+            // Act
+            var actual = str.Unwrap("<node>", "</node>");
+
             // Assert
             Assert.AreEqual(expected, actual);
         }

@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimTypeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Settings\TrimPropertiesSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrap\QuoteStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrap\WrapStringExtensions.cs" />
   </ItemGroup>
 </Project>

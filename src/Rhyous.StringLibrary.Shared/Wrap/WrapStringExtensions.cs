@@ -9,44 +9,7 @@ namespace Rhyous.StringLibrary
     public static class WrapStringExtensions
     {
         /// <summary>
-        /// Unquotes a string. Removes both single quotes and double quotes.
-        /// </summary>
-        /// <param name="value">The string, possibly with quotes.</param>
-        /// <returns>A string without quotes.</returns>
-        public static string Unquote(this string value)
-        {
-            return value.Trim(new[] { '"', '\'' });
-        }
-
-        /// <summary>
-        /// Quotes a string.
-        /// </summary>
-        /// <param name="value">The string to quote.</param>
-        /// <param name="quote">The quote character. Default is a double quote.</param>
-        /// <returns></returns>
-        public static string Quote(this string value, char quote = '"')
-        {
-            if (value.IsQuoted(new[] { quote.ToString() }))
-                return value;
-            return value.Wrap(quote);
-        }
-
-        /// <summary>
-        /// Checks if a string is quoted.
-        /// </summary>
-        /// <param name="value">The string to check.</param>
-        /// <param name="quotes">The quote characters to check the prefix and suffix. Default is both a double quote and a single quote.</param>
-        /// <returns>bool</returns>
-        /// <remarks>Wrapped assumes both sides of the quote are the same. This is not quote: "value'. This is wrapped: "value". This is wrapped. 'value'.</remarks>
-        public static bool IsQuoted(this string value, params string[] quotes)
-        {
-            if (quotes == null || !quotes.Any())
-                quotes = new[] { "'", "\"" };
-            return value.IsWrapped(quotes);
-        }
-
-        /// <summary>
-        /// Checks if a string is quoted.
+        /// Checks if a string is wrapped.
         /// </summary>
         /// <param name="value">The string to check.</param>
         /// <param name="wraps">The wrap characters to check. An ArgumentNullException is thrown if this is null.</param>
@@ -56,10 +19,9 @@ namespace Rhyous.StringLibrary
         {
             if (wraps == null || !wraps.Any())
                 throw new ArgumentNullException("wrapChars");
-            foreach (var wrapChar in wraps)
+            foreach (var wrapString in wraps)
             {
-                var quoteCharAsString = wrapChar.ToString();
-                if (value.StartsWith(quoteCharAsString) && value.EndsWith(quoteCharAsString))
+                if (value.StartsWith(wrapString) && value.EndsWith(wrapString))
                     return true;
             }
             return false;
@@ -109,6 +71,39 @@ namespace Rhyous.StringLibrary
         public static string Wrap(this string value, char prefix, char postfix)
         {
             return $"{prefix}{value}{postfix}";
+        }
+
+        /// <summary>
+        /// Unwrapse a string. Removes a wrapping string from both front and back.
+        /// </summary>
+        /// <param name="value">The string, possibly with quotes.</param>
+        /// <param name="wrap">The string that is at both the start and end that should be removed.</param>
+        /// <returns>A string without quotes.</returns>
+        /// <remarks>Should not remove a matching wrapping string unless it is both at the start and the end.</remarks>
+        public static string Unwrap(this string value, string wrap)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            if (value.Length >= wrap.Length * 2 && value.StartsWith(value) && value.EndsWith(value))
+                value = value.Substring(wrap.Length, value.Length - wrap.Length * 2);
+            return value;
+        }
+
+        /// <summary>
+        /// Unwrapse a string. Removes a wrapping string from both front and back.
+        /// </summary>
+        /// <param name="value">The string, possibly with quotes.</param>
+        /// <param name="prefix">The string that is at the start that should be removed.</param>
+        /// <param name="postfix">The string that is at the end that should be removed.</param>
+        /// <returns>A string without quotes.</returns>
+        /// <remarks>Should not remove a matching wrapping string unless it is both at the start and the end.</remarks>
+        public static string Unwrap(this string value, string prefix, string postfix)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            if (value.Length >= postfix.Length + prefix.Length &&  value.StartsWith(prefix) && value.EndsWith(postfix))
+                value = value.Substring(prefix.Length, value.Length - postfix.Length - prefix.Length);
+            return value;
         }
     }
 }

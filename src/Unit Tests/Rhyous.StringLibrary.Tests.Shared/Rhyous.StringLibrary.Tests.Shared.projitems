@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)TestObjects\TestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimAllTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimPropertiesTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wrap\QuoteStringExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Wrap\WrapStringExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
