@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
+using System.Reflection;
 
 namespace Rhyous.StringLibrary
 {
@@ -16,8 +18,17 @@ namespace Rhyous.StringLibrary
         
         public static object ToType(this string s, Type type, object defaultValue = null)
         {
-            var mi = typeof(PrimitiveStringExtensions).GetMethod("To");
-            var method = mi.MakeGenericMethod(type);
+            MethodInfo mi = null;
+            MethodInfo method = null;
+            if (type.IsEnum)
+            {
+                mi = typeof(StringEnumExtensions).GetMethods().FirstOrDefault(m => m.Name == "ToEnum" && m.GetParameters().Length == 4);
+                method = mi.MakeGenericMethod(type);
+                var defaultEnum = Enum.GetValues(type).GetValue(0);
+                return method.Invoke(null, new object[] { s, defaultEnum, true, true });
+            }
+            mi = typeof(PrimitiveStringExtensions).GetMethod("To");
+            method = mi.MakeGenericMethod(type);
             // Check if it is DateTime to handle this critical .NET bug
             // https://connect.microsoft.com/VisualStudio/feedback/details/733995/datetime-default-parameter-value-throws-formatexception-at-runtime
             if (type == typeof(DateTime))

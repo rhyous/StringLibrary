@@ -47,7 +47,21 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]
+        public void ToGenericAndToType_Enum_Test()
+        {
+            // Arrange
+            string s = "1";
+            var type = typeof(TestEnum);
+            string expected = "Test2";
 
+            // Act
+            var actual = s.ToType(type);
+
+            // Assert
+            Assert.AreEqual(type, actual.GetType());
+            Assert.AreEqual(expected, actual.ToString());
+        }
     }
 }
 #endif
