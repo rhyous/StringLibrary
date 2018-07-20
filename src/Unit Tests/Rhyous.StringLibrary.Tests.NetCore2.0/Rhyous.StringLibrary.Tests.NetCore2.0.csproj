@@ -8,6 +8,10 @@
     <AssemblyName>Rhyous.StringLibrary.Tests</AssemblyName>
 
     <RootNamespace>Rhyous.StringLibrary.Tests</RootNamespace>
+
+    <Version>1.1.6</Version>
+
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
