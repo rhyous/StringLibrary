@@ -9,7 +9,7 @@ namespace Rhyous.StringLibrary
     /// </summary>
     public static class TrimDictionaryExtensions
     {
-        public static void TrimDictionary(this IDictionary dictionary, IList<object> objectsBeingTrimmed)
+        public static void TrimDictionary(this IDictionary dictionary, IList<object> objectsBeingTrimmed = null)
         {
             if (dictionary == null)
                 return;

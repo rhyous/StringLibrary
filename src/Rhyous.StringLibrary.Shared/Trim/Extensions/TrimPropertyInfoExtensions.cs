@@ -15,8 +15,8 @@ namespace Rhyous.StringLibrary
             var indexParams = pi.GetIndexParameters();
             return (indexParams == null || indexParams.Length == 0)
                 && pi.PropertyType.IsTrimmable()
-                && (( TrimPropertiesSettings.TrimByDefault && !Attribute.IsDefined(pi, typeof(IgnoreTrim)))
-                   || !TrimPropertiesSettings.TrimByDefault && Attribute.IsDefined(pi, typeof(Trim)));
+                && (( TrimPropertiesSettings.TrimByDefault && !Attribute.IsDefined(pi, typeof(IgnoreTrimAttribute)))
+                   || !TrimPropertiesSettings.TrimByDefault && Attribute.IsDefined(pi, typeof(TrimAttribute)));
         }
     }
 }

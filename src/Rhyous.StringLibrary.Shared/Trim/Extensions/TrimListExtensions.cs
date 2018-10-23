@@ -7,7 +7,7 @@ namespace Rhyous.StringLibrary
      /// </summary>
     public static class TrimListExtensions
     {
-        public static void TrimList(this IList list, IList<object> objectsBeingTrimmed)
+        public static void TrimList(this IList list, IList<object> objectsBeingTrimmed = null)
         {
             objectsBeingTrimmed = objectsBeingTrimmed ?? new List<object>();
             objectsBeingTrimmed.Add(list);

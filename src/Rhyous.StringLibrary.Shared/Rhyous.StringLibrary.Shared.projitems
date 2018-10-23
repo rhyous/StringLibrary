@@ -18,8 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Expression\ExpressionMethodDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globalization\GlobalizationStringExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\IgnoreTrim.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\Trim.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\IgnoreTrimAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\TrimAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimDictionaryExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimListExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimObjectExtensions.cs" />

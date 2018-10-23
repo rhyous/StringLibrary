@@ -2,7 +2,7 @@
 
 namespace Rhyous.StringLibrary
 {
-    public class Trim : Attribute
+    public class IgnoreTrimAttribute : Attribute
     {
     }
 }
