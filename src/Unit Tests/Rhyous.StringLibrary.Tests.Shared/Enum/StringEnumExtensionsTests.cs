@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Rhyous.StringLibrary.Tests.Shared.Enum
+namespace Rhyous.StringLibrary.Tests
 {
     [TestClass]
     public class StringEnumExtensionsTests

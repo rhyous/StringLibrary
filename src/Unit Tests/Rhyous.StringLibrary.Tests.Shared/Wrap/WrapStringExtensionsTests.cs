@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Rhyous.StringLibrary.Tests.Shared.Wrap
+namespace Rhyous.StringLibrary.Tests.Wrap
 {
     [TestClass]
     public class WrapStringExtensionsTests

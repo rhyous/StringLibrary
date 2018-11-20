@@ -1,0 +1,30 @@
+Noun,		ExpectedPlural, Message
+panda,		pandas,			Just add s to a word that ends in "a".
+tub,		tubs,			Just add s to a word that ends in "b".
+mechanic,	mechanics,		Just add s to a word that ends in "c".
+dad,		dads,			Just add s to a word that ends in "d".
+apple,		apples,			Just add s to a word that ends in "e".
+ref,		refs,			Just add s to a word that ends in "f".
+dog,		dogs,			Just add s to a word that ends in "g".
+laugh,		laughs,			Just add s to a word that ends in "h".
+taxi,		taxis,			Just add s to a word that ends in "i".
+back,		backs,			Just add s to a word that ends in "k".
+ball,		balls,			Just add s to a word that ends in "l".
+storm,		storms,			Just add s to a word that ends in "m".
+pin,		pins,			Just add s to a word that ends in "n".
+hero,		heroes,			Add es to a word that ends in a consonante followed by an "o".
+tattoo,		tattoos,		Just add s to a word that ends in vowel folowed by an "o".
+lip,		lips,			Just add s to a word that ends in "p".
+bar,		bars,			Just add s to a word that ends in "r".
+grass,		grasses,		Add es to words ending in "s".
+bat,		bats,			Just add s to a word that ends in "t".
+emu,		emus,			Just add s to a word that ends in "u".
+dev,		devs,			Just add s to a word that ends in "v".
+law,		laws,			Just add s to a word that ends in "w".
+fox,		foxes,			Add es to a word that ends in "x".
+fly,		flies,			Replace a "y" with "ies" in a word that ends in "y".
+blitz,		blitzes,		Add es to words ending in "z".
+batch,		batches,		Add es to words ending in "ch".
+grass,		grasses,		Add es to words ending in "s".
+fox,		foxes,			Add es to words ending in "x".
+soliloquy,	soliloquies,	Replace "y" with "ies" even though "y" is preceded by a vowel when word ends with "quy".

@@ -9,6 +9,7 @@
     <Import_RootNamespace>Rhyous.StringLibrary.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Capitalization\StringCapitalizationExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Comparison\StringComparisonExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\StreamStringExtensions.cs" />
@@ -18,6 +19,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Expression\ExpressionMethodDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globalization\GlobalizationStringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishSingularNounsEndingInOneS.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\IETFLanguageTagDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\IPluralizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizationDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\LanguagePluralizerMissingException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\PluralizationExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\IgnoreTrimAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\TrimAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimDictionaryExtensions.cs" />
