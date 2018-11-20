@@ -61,7 +61,7 @@
     <None Include="tools\uninstall.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\App_Packages\Rhyous.StringLibrary.Sources.1.1.7\" />
+    <Folder Include="src\App_Packages\Rhyous.StringLibrary.Sources.1.1.8\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="exclude.txt" />
