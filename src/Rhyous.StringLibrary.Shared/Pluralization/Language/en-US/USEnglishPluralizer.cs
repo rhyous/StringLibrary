@@ -14,15 +14,22 @@ namespace Rhyous.StringLibrary.Pluralization
         public List<string> Vowels { get; } = new List<string> { "a", "e", "i", "o", "u" };
         public List<string> Diagraphs = new List<string> { "ch", "ci", "ck", "gh", "ng", "ph", "qu", "rh", "sc", "sh", "ss", "th", "ti", "wh", "wr", "zh" };
 
+        /// <inheritdoc />
         public IDictionary<string, string> PluralizationDictionary
         {
             get { return _PluralizationDictionary ?? (_PluralizationDictionary = new USEnglishPluralizationDictionary()); }
             set { _PluralizationDictionary = value; }
         } private IDictionary<string, string> _PluralizationDictionary;
 
-        public string Pluralize(string noun, IDictionary<string, string> customPluralizationDictionary = null)
+        /// <summary>
+        /// A method that pluralizes an word.
+        /// </summary>
+        /// <param name="noun">The word to pluralize</param>
+        /// <param name="pluralizationDictionary">Optional. If no dictionary is provided, the default dictionary is used.</param>
+        /// <returns>A string, which is the noun pluralized.</returns>
+        public string Pluralize(string noun, IDictionary<string, string> pluralizationDictionary = null)
         {
-            PluralizationDictionary = customPluralizationDictionary;
+            pluralizationDictionary = pluralizationDictionary ?? PluralizationDictionary;
             if (IsPlural(noun))
                 return noun;
             // Supported Capitalization scenarios
@@ -31,7 +38,7 @@ namespace Rhyous.StringLibrary.Pluralization
             // [X] First letter uppercase
             // [ ] More than one letter uppercase.  
             bool allUppercase;
-            if (PluralizationDictionary.TryGetValue(noun, out string value))
+            if (pluralizationDictionary.TryGetValue(noun, out string value))
             {
                 if (noun.All(c => char.IsUpper(c))) // All upper case
                     return value.ToUpper();
