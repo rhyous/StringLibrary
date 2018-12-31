@@ -75,7 +75,6 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         {
             // Arrange
             string noun = null;
-            string expectedPlural = "s's";
 
             // Act
             var actualPlural = new USEnglishPluralizer().ApplyStandardPluralizationRules(noun);

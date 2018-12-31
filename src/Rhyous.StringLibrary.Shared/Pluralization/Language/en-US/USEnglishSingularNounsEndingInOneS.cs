@@ -28,7 +28,6 @@ namespace Rhyous.StringLibrary.Pluralization
             Add("corpus");
             Add("cactus");
             Add("crisis");
-            Add("diagnosis");
             Add("discus");
             Add("ellipsis");
             Add("focus");
@@ -42,7 +41,6 @@ namespace Rhyous.StringLibrary.Pluralization
             Add("oasis");
             Add("opus");
             Add("parenthesis");
-            Add("prognosis");
             Add("radius");
             Add("rhinoceros");
             Add("series");
