@@ -277,7 +277,7 @@ Write-Log "Creating package..." -ForegroundColor Green
 
 # Create symbols package if any .pdb files are located in the lib folder
 If ((Get-ChildItem *.pdb -Path .\lib -Recurse).Count -gt 0) {
-	$packageTask = Create-Process .\NuGet.exe ("pack Package.nuspec -Symbol -Verbosity Detailed")
+	$packageTask = Create-Process .\NuGet.exe ("pack Package.nuspec -Symbols -Verbosity Detailed")
 	$packageTask.Start() | Out-Null
 	$packageTask.WaitForExit()
 			
