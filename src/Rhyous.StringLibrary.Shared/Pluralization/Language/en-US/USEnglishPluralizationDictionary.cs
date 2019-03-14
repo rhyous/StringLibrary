@@ -1,18 +1,32 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace Rhyous.StringLibrary.Pluralization
 {
     /// <summary>
     /// A dictionary to hold custom pluralizations in English.
-    /// If you see a noun missing, don't hesitate to ask for it to be added: https://github.com/rhyous/StringLibrary
-    /// Either: 1. Fork, fix, request a pull request, or 2. Submit an Issue.
+    /// If you see a noun missing, don't hesitate to ask for it to be 
+    /// added here: https://github.com/rhyous/StringLibrary
+    /// Either: 1. Fork, fix, request a pull request, or 
+    ///         2. Submit an Issue.
     /// </summary>
-    public class USEnglishPluralizationDictionary : Dictionary<string, string>
+    /// <remarks>By re-implementing IDictionary, I can change how the
+    /// Add method works. Concurrent dictionary calls TryAdd, but I 
+    /// wanted to call AddOrUpdate.</remarks>
+    public class USEnglishPluralizationDictionary : ConcurrentDictionary<string, string>
+                                                  , IDictionary<string,string>
+                                                  , IDictionary
     {
         public USEnglishPluralizationDictionary() : base(StringComparer.OrdinalIgnoreCase)
         {
             Init();
+        }
+
+        public void Add(string key, string value)
+        {
+            AddOrUpdate(key, value, (k, v) => value);
         }
 
         protected virtual void Init()

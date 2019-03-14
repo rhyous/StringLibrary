@@ -27,4 +27,5 @@ blitz,		blitzes,		Add es to words ending in "z".
 batch,		batches,		Add es to words ending in "ch".
 grass,		grasses,		Add es to words ending in "s".
 fox,		foxes,			Add es to words ending in "x".
+guy,		guys,			Just add s to a word that ends in y if a vowel precedes the y.
 soliloquy,	soliloquies,	Replace "y" with "ies" even though "y" is preceded by a vowel when word ends with "quy".

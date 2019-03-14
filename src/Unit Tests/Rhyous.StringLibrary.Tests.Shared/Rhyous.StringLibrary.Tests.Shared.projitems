@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Enum\StringEnumExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Expression\PropertyNameLambdaExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Globalization\GlobalizationStringExtensionsTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pluralization\IETFLanguageTagDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\PluralizationExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizationDictionaryTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizerTests.cs" />
@@ -30,6 +31,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Data\AlphabetAndNumbers.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Data\CustomPluralizers.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Data\RegularEnglishNouns.csv">

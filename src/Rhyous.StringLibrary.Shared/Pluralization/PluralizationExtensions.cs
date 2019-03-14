@@ -7,11 +7,40 @@ namespace Rhyous.StringLibrary.Pluralization
     {
         public static string Pluralize(this string noun, IDictionary<string, string> customPluralizationDictionary = null, CultureInfo culture = null)
         {
+            string plural = null;
             culture = culture ?? CultureInfo.CurrentCulture;
-            if (IETFLanguageTagDictionary.Instance.TryGetValue(culture.IetfLanguageTag, out IPluralizer pluralizer) // Exact culture
-             || IETFLanguageTagDictionary.Instance.TryGetValue(culture.TwoLetterISOLanguageName, out pluralizer)) // Base culture
-                return pluralizer.Pluralize(noun, customPluralizationDictionary);
+            // We need to check the specific and less specific dictionaries for a custom plural before applying standard pluralization.
+            IPluralizer[] pluralizers = new IPluralizer[2];
+            plural = noun.PluralizeByCustomDictionaries(customPluralizationDictionary, culture, pluralizers);
+            if (!string.IsNullOrWhiteSpace(plural))
+                return plural;
+
+            // Apply custom pluralization
+            foreach (var pluralizer in pluralizers)
+            {
+                if (pluralizer != null)
+                    return pluralizer.Pluralize(noun, customPluralizationDictionary);
+            }
+
+            // No pluralizer for either the 5- or 2-letter Iso tags.
             throw new LanguagePluralizerMissingException(culture.IetfLanguageTag);
+        }
+
+        private static string PluralizeByCustomDictionaries(this string noun, IDictionary<string, string> customPluralizationDictionary, CultureInfo culture, IPluralizer[] pluralizers)
+        {
+            var ietfIsoCodes = new[] { culture.IetfLanguageTag, culture.TwoLetterISOLanguageName };
+            for (int i = 0; i < 2; i++)
+            {
+                var ietfIsoCode = ietfIsoCodes[i];
+                if (IETFLanguageTagDictionary.Instance.TryGetValue(ietfIsoCode, out IPluralizer pluralizer)) // Exact culture
+                {
+                    var plural = pluralizer.Pluralize(noun, customPluralizationDictionary, true);
+                    if (!string.IsNullOrWhiteSpace(plural))
+                        return plural;
+                    pluralizers[i] = pluralizer;
+                }
+            }
+            return null;
         }
     }
 }

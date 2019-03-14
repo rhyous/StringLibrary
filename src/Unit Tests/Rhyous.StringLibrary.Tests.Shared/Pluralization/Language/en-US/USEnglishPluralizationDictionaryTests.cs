@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhyous.StringLibrary.Pluralization;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Rhyous.StringLibrary.Tests.Pluralization
 {

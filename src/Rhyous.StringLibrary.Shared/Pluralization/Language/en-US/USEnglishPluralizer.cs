@@ -27,26 +27,16 @@ namespace Rhyous.StringLibrary.Pluralization
         /// <param name="noun">The word to pluralize</param>
         /// <param name="pluralizationDictionary">Optional. If no dictionary is provided, the default dictionary is used.</param>
         /// <returns>A string, which is the noun pluralized.</returns>
-        public string Pluralize(string noun, IDictionary<string, string> pluralizationDictionary = null)
+        public string Pluralize(string noun, IDictionary<string, string> pluralizationDictionary = null, bool customOnly = false)
         {
             pluralizationDictionary = pluralizationDictionary ?? PluralizationDictionary;
             if (IsPlural(noun))
                 return noun;
-            // Supported Capitalization scenarios
-            // [X] All uppercase
-            // [X] All lowercase
-            // [X] First letter uppercase
-            // [ ] More than one letter uppercase.  
-            bool allUppercase;
             if (pluralizationDictionary.TryGetValue(noun, out string value))
-            {
-                if (noun.All(c => char.IsUpper(c))) // All upper case
-                    return value.ToUpper();
-                if (char.IsUpper(noun[0]))  // First letter uppercase
-                    return value.CapitalizeFirstLetter();
-                return value; // All lowercase
-            }
-            allUppercase = noun.Length > 1 && noun.All(c => char.IsUpper(c)) 
+                return value.MatchCapitalization(noun);
+            if (customOnly)
+                return null;
+            bool allUppercase = noun.Length > 1 && noun.All(c => char.IsUpper(c))
                         && !(noun.Length == 2 && Diagraphs.Contains(noun, StringComparer.OrdinalIgnoreCase));
             return ApplyStandardPluralizationRules(noun, allUppercase);
         }
@@ -82,7 +72,7 @@ namespace Rhyous.StringLibrary.Pluralization
                 // or ends in -quy. Example: soliloquies
                 || (noun.EndsWith("quy", StringComparison.OrdinalIgnoreCase)))
                     return noun.Substring(0, noun.Length - 1) + ies; // flies, ties, treaties
-                return noun + s; // Example: boys, toys, joys, guys
+                return noun + s; // Example: bays, boys, days, toys, joys, guys, guys.
             }
 
             // Nouns that end with consonant followed by o should usually end with -es. If not, put them in the dictionary.
@@ -115,7 +105,7 @@ namespace Rhyous.StringLibrary.Pluralization
             if (noun.Length == 1)
                 return false;
             
-            if (noun.EndsWith("s"))
+            if (noun.EndsWith("s", StringComparison.OrdinalIgnoreCase))
                 return true;
 
             return false;
