@@ -8,6 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet", "NuGet\Rhyous.StringLibrary.NuGet\Rhyous.StringLibrary.NuGet.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB7B5256-03FE-4C28-B8FB-81632981658B} = {FB7B5256-03FE-4C28-B8FB-81632981658B}
+		{A7E8F063-2E00-484A-AE0A-8C17A8AB52AC} = {A7E8F063-2E00-484A-AE0A-8C17A8AB52AC}
+		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55} = {1CD5C8EF-0F18-4015-AE86-58E336F5AB55}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet.Sources", "NuGet\Rhyous.StringLibrary.NuGet.Sources\Rhyous.StringLibrary.NuGet.Sources.csproj", "{8A44B2FA-517D-4DC0-AB3D-2608810B684E}"
 EndProject
