@@ -11,6 +11,18 @@ namespace Rhyous.StringLibrary.Tests.Comparison
     {
         public TestContext TestContext { get; set; }
 
+        [TestMethod]
+        public void PrimitiveStringExtensions_To_Int_Test()
+        {
+            Assert.AreEqual(10, "10".To<int>());
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_To_ObjectClass_Test()
+        {
+            Assert.IsNull("10".To<object>());
+        }
+
         /// <summary>
         /// Tests both the ToGeneric and the ToType methods
         /// </summary>
@@ -61,6 +73,36 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             // Assert
             Assert.AreEqual(type, actual.GetType());
             Assert.AreEqual(expected, actual.ToString());
+        }
+
+        [TestMethod]
+        public void ToGenericAndToType_Nullable_Test()
+        {
+            // Arrange
+            string s = "";
+            var type = typeof(int?);
+            int? n = 1;
+
+            // Act
+            int? actual = s.To(n);
+
+            // Assert
+            Assert.IsNull(actual);
+        }
+
+        [TestMethod]
+        public void ToGenericAndToType_7_Test()
+        {
+            // Arrange
+            string s = "7";
+            var type = typeof(int?);
+            int? n = 1;
+
+            // Act
+            int? actual = s.To(n);
+
+            // Assert
+            Assert.AreEqual(7, actual);
         }
     }
 }
