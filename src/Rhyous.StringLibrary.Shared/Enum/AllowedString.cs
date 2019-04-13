@@ -34,10 +34,13 @@ namespace Rhyous.StringLibrary
             {
                 if (AllowedValues.Contains(value))
                     _Value = value;
-                throw new ValueNotAllowedException("value", $"Value ${value} is not allowed. Allowed values include: {string.Join(", ", AllowedValues)}");
+                throw new ValueNotAllowedException($"Value ${value} is not allowed. Allowed values include: {string.Join(", ", AllowedValues)}", nameof(value));
             }
         } private string _Value;
 
+        /// <summary>
+        /// A list of allowed strings.
+        /// </summary>
 #if NET40
         public ICollection<string> AllowedValues { get; }
 #else
@@ -48,6 +51,5 @@ namespace Rhyous.StringLibrary
         /// The propertly holding the default value.
         /// </summary>
         public string DefaultValue { get; }
-
     }
 }

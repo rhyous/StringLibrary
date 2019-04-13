@@ -2,14 +2,19 @@
 
 namespace Rhyous.StringLibrary
 {
+    /// <summary>
+    /// An extensions class that provides quoting and unquoting string extensions.
+    /// </summary>
     public static class QuoteStringExtensions
     {
         /// <summary>
-        /// Unquotes a string. Removes both single quotes and double quotes.
+        /// Unquotes a string. Removes both single quotes and double quote pairs.
         /// </summary>
         /// <param name="value">The string, possibly with quotes.</param>
+        /// <param name="levels">The number of leves to remove.</param>
         /// <returns>A string without quotes.</returns>
-        /// <remarks>Should not remove a single quote that is part of the wrapped string, even if it is the start or end character.</remarks>
+        /// <remarks>Should not remove a single quote, apostrophe, that is part of the wrapped
+        /// string, even if it is the start or end character.</remarks>
         public static string Unquote(this string value, int levels = 0)
         {
             if (string.IsNullOrEmpty(value))
@@ -94,6 +99,7 @@ namespace Rhyous.StringLibrary
         /// Unescapes quotes that are escaped with the specified escape character.
         /// </summary>
         /// <param name="value">The string with escaped quotes.</param>
+        /// <param name="quoteChar">The character used to quote.</param>
         /// <param name="escapeChar">The escape character.</param>
         /// <returns></returns>
         public static string UnescapeQuotes(this string value, char quoteChar, char escapeChar)

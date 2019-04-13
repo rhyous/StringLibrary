@@ -16,7 +16,8 @@ namespace Rhyous.StringLibrary
         /// Finds any property of type string and trims it, unless that property has the
         /// IgnoreTrimAttribute applied.
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">The object to trim.</param>
+        /// <param name="objectsBeingTrimmed">A list of objects already being trimmed.</param>
         public static void TrimStringProperties(this object obj, IList<object> objectsBeingTrimmed = null)
         {
             if (obj == null || obj.IsAlreadyBeingTrimmed(objectsBeingTrimmed))
@@ -61,6 +62,11 @@ namespace Rhyous.StringLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="objectsBeingTrimmed"></param>
         public static void TrimGeneric(this object obj, IList<object> objectsBeingTrimmed = null)
         {
             var dictionary = obj as IDictionary;
@@ -77,17 +83,26 @@ namespace Rhyous.StringLibrary
             }
         }
 
+        /// <summary>
+        /// A method that trims an object.
+        /// </summary>
+        /// <param name="obj">The object to trim.</param>
+        /// <param name="prop">The PropertyInfo of that object.</param>
+        /// <param name="objectsBeingTrimmed">A list of objects already being trimed.</param>
         public static void TrimObject(this object obj, PropertyInfo prop, IList<object> objectsBeingTrimmed = null)
         {
             var value = prop.GetValue(obj, null);
             if (value.GetType() == typeof(string))
                 obj.TrimString(prop);
             else
-            {
                 value.TrimStringProperties(objectsBeingTrimmed);
-            }
         }
 
+        /// <summary>
+        /// A method to trim an property value that is a string.
+        /// </summary>
+        /// <param name="obj">The object</param>
+        /// <param name="stringProperty">The string property of an object.</param>
         public static void TrimString(this object obj, PropertyInfo stringProperty)
         {
             string currentValue;

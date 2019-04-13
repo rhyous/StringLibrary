@@ -2,6 +2,9 @@
 
 namespace Rhyous.StringLibrary.Pluralization
 {
+    /// <summary>
+    /// An interface for Pluralizers.
+    /// </summary>
     public interface IPluralizer
     {
         /// <summary>
@@ -16,6 +19,6 @@ namespace Rhyous.StringLibrary.Pluralization
         /// <param name="pluralizationDictionary">Optional. If no dictionary is provided, the default dictionary should be used.</param>
         /// <param name="customOnly">Will only pluralize if the word is found in either the provided custom dictionary or the default custom dictionary.</param>
         /// <returns>A string, which is the noun pluralized.</returns>
-        string Pluralize(string noun, IDictionary<string, string> customPluralizationDiction = null, bool customOnly = false);
+        string Pluralize(string noun, IDictionary<string, string> pluralizationDictionary = null, bool customOnly = false);
     }
 }

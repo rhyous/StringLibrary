@@ -3,8 +3,18 @@ using System.Globalization;
 
 namespace Rhyous.StringLibrary.Pluralization
 {
+    /// <summary>
+    /// An extensions class that provides pluralizations methods to string.
+    /// </summary>
     public static class PluralizationExtensions
     {
+        /// <summary>
+        /// A method to pluralize a word.
+        /// </summary>
+        /// <param name="noun">A word to pluralize.</param>
+        /// <param name="customPluralizationDictionary">Optional. A custom pluralization dictionary.</param>
+        /// <param name="culture">Optional. The culture. If none is applied the running culture is used.</param>
+        /// <returns>The word pluralized.</returns>
         public static string Pluralize(this string noun, IDictionary<string, string> customPluralizationDictionary = null, CultureInfo culture = null)
         {
             string plural = null;

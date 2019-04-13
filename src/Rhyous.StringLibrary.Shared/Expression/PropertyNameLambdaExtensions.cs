@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Rhyous.StringLibrary
 {
+    /// <summary>
+    /// An extension method for turning strings into Lambda expressions.
+    /// </summary>
     public static class PropertyNameLambdaExtensions
     {
         /// <summary>
@@ -33,6 +36,7 @@ namespace Rhyous.StringLibrary
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="value">The value to compare.</param>
         /// <param name="methodName">The method. It can be a method or it can be a any OData filter operator. The default is eq. Any valid method could be used. For example, if TInput is string, StartsWith or EndsWith, etc., would be options.</param>
+        /// <param name="not">Whether to negate the expression or not.</param>
         /// <returns>An Expression that when called should return true or false whether the property value equals the specified value.</returns>
         public static Expression<Func<T, bool>> ToLambda<T, TInput>(this string propertyName, TInput value, string methodName = "eq", bool not = false)
         {
@@ -50,7 +54,7 @@ namespace Rhyous.StringLibrary
                 var methodInfo = typeof(TInput).GetMethod(methodName, new[] { typeof(TInput) });
                 method = Expression.Call(left, methodInfo, right);
             }
-            return Expression.Lambda<Func<T, bool>>(not? Expression.Not(method) : method, parameter);
+            return Expression.Lambda<Func<T, bool>>(not ? Expression.Not(method) : method, parameter);
         }
 
         /// <summary>
@@ -58,7 +62,7 @@ namespace Rhyous.StringLibrary
         /// </summary>
         /// <typeparam name="T">The type of the object the lambda will run against.</typeparam>
         /// <param name="propertyName">The name of the property.</param>
-        /// <param name="Type">The type of the object the lambda will run against.</param>
+        /// <param name="type">The type of the object the lambda will run against.</param>
         /// <param name="parameters">The parameters to pass into the ToLambda{T, TInput} method as an object array.</param>
         /// <returns>An Expression that when called should return true or false whether the property value equals the specified value.</returns>
         public static Expression<Func<T, bool>> ToLambda<T>(this string propertyName, Type type, params object[] parameters)

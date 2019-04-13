@@ -7,10 +7,18 @@
     <Company>Rhyous Publishing LLC</Company>
     <Product>Rhyous.StringLibrary</Product>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.10.0</FileVersion>
-    <Version>1.1.10</Version>
+    <FileVersion>1.1.12.0</FileVersion>
+    <Version>1.1.12</Version>
     <AssemblyName>Rhyous.StringLibrary</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
   </PropertyGroup>
 
   <Import Project="..\Rhyous.StringLibrary.Shared\Rhyous.StringLibrary.Shared.projitems" Label="Shared" />

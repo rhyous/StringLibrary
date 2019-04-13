@@ -6,12 +6,18 @@ using System.Linq.Expressions;
 
 namespace Rhyous.StringLibrary
 {
+    /// <summary>
+    /// A dictionary for common operators in Expressions.
+    /// </summary>
     public class ExpressionMethodDictionary : Dictionary<string,Func<Expression, Expression, Expression>>
     {
-#region Singleton
+        #region Singleton
 
         private static readonly Lazy<ExpressionMethodDictionary> Lazy = new Lazy<ExpressionMethodDictionary>(() => new ExpressionMethodDictionary());
 
+        /// <summary>
+        /// The singleton instance for this dictionary.
+        /// </summary>
         public static ExpressionMethodDictionary Instance { get { return Lazy.Value; } }
 
         internal ExpressionMethodDictionary()
@@ -24,7 +30,7 @@ namespace Rhyous.StringLibrary
             Add("le", (a, b) => Expression.LessThanOrEqual(a, b));
         }
 
-#endregion
+        #endregion
     }
 }
 #endif

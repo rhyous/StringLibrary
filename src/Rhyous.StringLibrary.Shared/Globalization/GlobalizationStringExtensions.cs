@@ -4,13 +4,16 @@ using System.Text;
 
 namespace Rhyous.StringLibrary
 {
+    /// <summary>
+    /// An extensions class that provides globalization extensions to string.
+    /// </summary>
     public static class GlobalizationStringExtensions
     {
         /// <summary>
         /// Removes diacritics from a string.
         /// </summary>
-        /// <param name="stIn"></param>
-        /// <returns>string without diacitics</returns>
+        /// <param name="inString">The string.</param>
+        /// <returns>The string without diacitics</returns>
         public static string RemoveDiacritics(this string inString)
         {
             var strFormD = inString.Normalize(NormalizationForm.FormD);

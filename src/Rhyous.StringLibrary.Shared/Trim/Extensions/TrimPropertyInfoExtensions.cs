@@ -8,6 +8,11 @@ namespace Rhyous.StringLibrary
     /// </summary>
     public static class TrimPropertyInfoExtensions
     {
+        /// <summary>
+        /// A method that determines if a property is trimmable.
+        /// </summary>
+        /// <param name="pi">The PropertyInfo.</param>
+        /// <returns></returns>
         public static bool IsTrimmable(this PropertyInfo pi)
         {
             if (pi == null)

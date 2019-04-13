@@ -91,10 +91,13 @@
   <PropertyGroup>
     <PreBuildEvent>SET Project=Rhyous.StringLibrary
 copy /Y "$(SolutionDir)%25Project%25.net40-client\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net40-client\"
+copy /Y "$(SolutionDir)%25Project%25.net40-client\$(OutDir)%25Project%25.xml" "$(ProjectDir)lib\net40-client\"
 REM copy /Y "$(SolutionDir)%25Project%25.net40-client\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net40-client\"
 copy /Y "$(SolutionDir)%25Project%25.NetStandard2.0\$(OutDir)netstandard2.0\%25Project%25.dll" "$(ProjectDir)lib\\netstandard2.0\"
+copy /Y "$(SolutionDir)%25Project%25.NetStandard2.0\$(OutDir)netstandard2.0\%25Project%25.xml" "$(ProjectDir)lib\\netstandard2.0\"
 REM copy /Y "$(SolutionDir)%25Project%25.NetStandard2.0\$(OutDir)netstandard2.0\%25Project%25.pdb" "$(ProjectDir)lib\netstandard2.0\"
 copy /Y "$(SolutionDir)%25Project%25.Net461\$(OutDir)%25Project%25.dll" "$(ProjectDir)lib\net461\"
+copy /Y "$(SolutionDir)%25Project%25.Net461\$(OutDir)%25Project%25.xml" "$(ProjectDir)lib\net461\"
 REM copy /Y "$(SolutionDir)%25Project%25.Net461\$(OutDir)%25Project%25.pdb" "$(ProjectDir)lib\net461\"
 </PreBuildEvent>
   </PropertyGroup>

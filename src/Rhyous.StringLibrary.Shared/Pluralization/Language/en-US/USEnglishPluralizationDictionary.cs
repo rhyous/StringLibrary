@@ -19,16 +19,29 @@ namespace Rhyous.StringLibrary.Pluralization
                                                   , IDictionary<string,string>
                                                   , IDictionary
     {
+        /// <summary>
+        /// The default constructor. This initializes this dictionary with a list of 
+        /// known plurlization exceptions.
+        /// </summary>
         public USEnglishPluralizationDictionary() : base(StringComparer.OrdinalIgnoreCase)
         {
             Init();
         }
 
+        /// <summary>
+        /// This method allows for adding another custom pluralization.
+        /// </summary>
+        /// <param name="key">The singular word.</param>
+        /// <param name="value">The custom pluralization of the word.</param>
         public void Add(string key, string value)
         {
             AddOrUpdate(key, value, (k, v) => value);
         }
 
+        /// <summary>
+        /// This initializes this dictionary with a list of 
+        /// known plurlization exceptions.
+        /// </summary>
         protected virtual void Init()
         {
             Add("addendum", "addenda");

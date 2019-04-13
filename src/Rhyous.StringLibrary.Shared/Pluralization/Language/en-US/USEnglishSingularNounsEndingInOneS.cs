@@ -11,11 +11,17 @@ namespace Rhyous.StringLibrary.Pluralization
     /// </summary>
     public class SingularNounsEndingInOneS : HashSet<string>
     {
+        /// <summary>
+        /// The constructor for this object.
+        /// </summary>
         public SingularNounsEndingInOneS() : base(StringComparer.OrdinalIgnoreCase)
         {
             Init();
         }
 
+        /// <summary>
+        /// A method to initialize this HashSet.
+        /// </summary>
         internal void Init()
         {
             Add("alumnus");

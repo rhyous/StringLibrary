@@ -10,9 +10,18 @@ namespace Rhyous.StringLibrary.Pluralization
     /// </summary>
     public class USEnglishPluralizer : IPluralizer
     {
+        #region Properties
+        /// <summary>A list of word ending that pluralize with 'es'.</summary>
         public List<string> EndingsThatPuralizeWithEs { get; } = new List<string> { "ch", "s", "sh", "x", "z" };
+        /// <summary>A list of english vowels.</summary>
         public List<string> Vowels { get; } = new List<string> { "a", "e", "i", "o", "u" };
+        /// <summary>A list of english diagraphs, which are letter combos that make their own sound.</summary>
         public List<string> Diagraphs = new List<string> { "ch", "ci", "ck", "gh", "ng", "ph", "qu", "rh", "sc", "sh", "ss", "th", "ti", "wh", "wr", "zh" };
+        /// <summary>A list word endings that end in s but are singular.</summary>
+        public List<string> SingularSEndings { get; } = new List<string> { "ss", "itis", "osis" };
+        /// <summary>A list plurals that are irregular.</summary>
+        public HashSet<string> IrregularPlurals => (_IrregularPlurals == null || _IrregularPlurals.Count != PluralizationDictionary.Count) ? BuildHashSet() : _IrregularPlurals;
+        private HashSet<string> _IrregularPlurals;
 
         /// <inheritdoc />
         public IDictionary<string, string> PluralizationDictionary
@@ -22,10 +31,22 @@ namespace Rhyous.StringLibrary.Pluralization
         } private IDictionary<string, string> _PluralizationDictionary;
 
         /// <summary>
+        /// A HashSet of Singular words ending with one s.
+        /// </summary>
+        public HashSet<string> SingularsEndingInOneS
+        {
+            get { return _SingularsEndingInOneS ?? (_SingularsEndingInOneS = new SingularNounsEndingInOneS()); }
+            set { _SingularsEndingInOneS = value; }
+        } private HashSet<string> _SingularsEndingInOneS;
+        #endregion
+
+        /// <summary>
         /// A method that pluralizes an word.
         /// </summary>
         /// <param name="noun">The word to pluralize</param>
         /// <param name="pluralizationDictionary">Optional. If no dictionary is provided, the default dictionary is used.</param>
+        /// <param name="customOnly">Optional. If true, returns only a value from the custom dictionary. 
+        /// If false, and the word is not in the custom pluralization dictionary, it will apply standard pluralization rules.</param>
         /// <returns>A string, which is the noun pluralized.</returns>
         public string Pluralize(string noun, IDictionary<string, string> pluralizationDictionary = null, bool customOnly = false)
         {
@@ -41,6 +62,12 @@ namespace Rhyous.StringLibrary.Pluralization
             return ApplyStandardPluralizationRules(noun, allUppercase);
         }
 
+        /// <summary>
+        /// A method that pluralizes an word without using a custom pluralization dictionary.
+        /// </summary>
+        /// <param name="noun">The word to pluralize</param>
+        /// <param name="capitalize">Whether to capitalize the word.</param>
+        /// <returns></returns>
         public string ApplyStandardPluralizationRules(string noun, bool capitalize = false)
         {
             string s = "s", es = "es", ies = "ies";
@@ -87,6 +114,11 @@ namespace Rhyous.StringLibrary.Pluralization
             return noun + s;
         }
 
+        /// <summary>
+        /// A method to tell if a word is already a plural.
+        /// </summary>
+        /// <param name="noun">The word.</param>
+        /// <returns>True if plural, false otherwise.</returns>
         public bool IsPlural(string noun)
         {
             // Handles all irregular plurals and plurals that are are the same as their singular
@@ -112,11 +144,6 @@ namespace Rhyous.StringLibrary.Pluralization
         }
 
 
-        public List<string> SingularSEndings { get; } = new List<string> { "ss", "itis", "osis" };
-
-        public HashSet<string> IrregularPlurals => (_IrregularPlurals == null || _IrregularPlurals.Count != PluralizationDictionary.Count) ? BuildHashSet() : _IrregularPlurals;
-        private HashSet<string> _IrregularPlurals;
-
         private HashSet<string> BuildHashSet()
         {
             _IrregularPlurals = new HashSet<string>();
@@ -126,12 +153,5 @@ namespace Rhyous.StringLibrary.Pluralization
             }
             return _IrregularPlurals;
         }
-
-        public HashSet<string> SingularsEndingInOneS
-        {
-            get { return _SingularsEndingInOneS ?? (_SingularsEndingInOneS = new SingularNounsEndingInOneS()); }
-            set { _SingularsEndingInOneS = value; }
-        } private HashSet<string> _SingularsEndingInOneS;
-
     }
 }

@@ -4,8 +4,16 @@ using System.Text;
 
 namespace Rhyous.StringLibrary
 {
+    /// <summary>
+    /// An extensions class that provides capitalization method to string.
+    /// </summary>
     public static class StringCapitalizationExtensions
     {
+        /// <summary>
+        /// Capitalized the first letter of a word.
+        /// </summary>
+        /// <param name="word">The word or string to capitalize the first letter.</param>
+        /// <returns>A string with the first letter capitalized.</returns>
         public static string CapitalizeFirstLetter(this string word)
         {
             if (string.IsNullOrWhiteSpace(word))
@@ -16,11 +24,11 @@ namespace Rhyous.StringLibrary
         }
 
         /// <summary>
-        /// 
+        /// A method that tries to match the capitalization from one string to another.
         /// </summary>
-        /// <param name="wordToChange"></param>
-        /// <param name="wordToMatch"></param>
-        /// <returns></returns>
+        /// <param name="wordToChange">The string to change the capitalization of.</param>
+        /// <param name="wordToMatch">The string to match the capitalization of.</param>
+        /// <returns>A string matching the capitalization from one string to another.</returns>
         /// <remarks>This is an algorithm, which allows it to break the 10/100 rules.</remarks>
         public static string MatchCapitalization(this string wordToChange, string wordToMatch)
         {
