@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\PluralizationExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizationDictionaryTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizerTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\CryptoRandomStringTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TestObjects\TestObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimAllTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimDictionaryExtensionsTests.cs" />

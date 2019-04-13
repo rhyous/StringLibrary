@@ -26,6 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\Language\en-US\USEnglishPluralizationDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\LanguagePluralizerMissingException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pluralization\PluralizationExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Random\CryptoRandomString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\IgnoreTrimAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Attributes\TrimAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trim\Extensions\TrimDictionaryExtensions.cs" />
