@@ -1,7 +1,6 @@
-﻿#if NETCOREAPP2_0
-#else
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Globalization;
 using System.Reflection;
 
 namespace Rhyous.StringLibrary.Tests.Comparison
@@ -23,6 +22,8 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.IsNull("10".To<object>());
         }
 
+#if NETCOREAPP2_0
+#else
         /// <summary>
         /// Tests both the ToGeneric and the ToType methods
         /// </summary>
@@ -44,6 +45,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.AreEqual(type, actual.GetType());
             Assert.AreEqual(expected, actual.ToString());
         }
+#endif
 
         [TestMethod]
         public void ToDateTimeTest()
@@ -104,6 +106,54 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             // Assert
             Assert.AreEqual(7, actual);
         }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_To_Int_enUS_Test()
+        {
+            var actual = "1.000".To(0, CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"));
+            Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_To_Int_Generic_enUS_Test()
+        {
+            var actual = "1.000".To<int>(0, CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"));
+            Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_To_Int16_Generic_enUS_Test()
+        {
+            var actual = "1.000".To<short>(0, CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"));
+            Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_RoundUp_To_Int_enUS_Test()
+        {
+            var actual = "1.600".To(0, CultureInfo.GetCultureInfoByIetfLanguageTag("en-US"));
+            Assert.AreEqual(2, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_To_Int_enGB_Test()
+        {
+            var actual = "1.000".To(0, CultureInfo.GetCultureInfoByIetfLanguageTag("en-GB"));
+            Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_DoubleString_To_Int_Invariant_Test()
+        {
+            var actual = "1.000".To(0);
+            Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_1_To_Int_Test()
+        {
+            var actual = "1".To<int>();
+            Assert.AreEqual(1, actual);
+        }
     }
 }
-#endif

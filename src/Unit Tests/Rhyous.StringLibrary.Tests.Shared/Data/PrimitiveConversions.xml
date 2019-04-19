@@ -136,6 +136,24 @@
     <x:Message></x:Message>
   </x:Row>
   <x:Row>
+    <x:String>1.0</x:String>
+    <x:Type>System.Int32</x:Type>
+    <x:Expected>1</x:Expected>
+    <x:Message>Doubles should easily convert to ints with rounding.</x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>1.6</x:String>
+    <x:Type>System.Int32</x:Type>
+    <x:Expected>2</x:Expected>
+    <x:Message>Doubles should easily convert to ints with rounding.</x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>27.3</x:String>
+    <x:Type>System.Int32</x:Type>
+    <x:Expected>27</x:Expected>
+    <x:Message>Doubles should easily convert to ints with rounding.</x:Message>
+  </x:Row>
+  <x:Row>
     <x:String>abc</x:String>
     <x:Type>System.Int64</x:Type>
     <x:Expected>0</x:Expected>
@@ -194,6 +212,24 @@
     <x:Type>System.Int64</x:Type>
     <x:Expected>0</x:Expected>
     <x:Message></x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>1.0</x:String>
+    <x:Type>System.Int64</x:Type>
+    <x:Expected>1</x:Expected>
+    <x:Message>Doubles should easily convert to longs with rounding.</x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>1.6</x:String>
+    <x:Type>System.Int64</x:Type>
+    <x:Expected>2</x:Expected>
+    <x:Message>Doubles should easily convert to longs with rounding.</x:Message>
+  </x:Row>
+  <x:Row>
+    <x:String>27.3</x:String>
+    <x:Type>System.Int64</x:Type>
+    <x:Expected>27</x:Expected>
+    <x:Message>Doubles should easily convert to longs with rounding.</x:Message>
   </x:Row>
   <x:Row>
     <x:String>0BF5EBA3-3823-481D-927D-F4C31968FAF7</x:String>
