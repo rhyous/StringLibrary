@@ -59,3 +59,12 @@ Have you heard of [The Oft Forgotten Middle Trim](http://www.rhyous.com/2016/03/
 https://github.com/rhyous/StringLibrary/tree/master/src/Rhyous.StringLibrary.Shared/Wrap
 Easily quote strings or wrap them in brackets or parentheses or xml tags.
 
+## Why you should contribute to this library
+This project is very easy to contribute to. 
+If you have a string extension or something you do with strings often, others probably will do the same. Having a common place for stable unit tests code is important.
+
+Why contribute:
+1. You don't have to reinvent the entire wheel, you can simply improve and existing wheel.
+2. You can use the code anywhere, anytime as it is delivered as a public NuGet package.
+3. You can get this code in both .NET Framework and .NET Core or Standard.
+
