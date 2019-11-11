@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Capitalization\StringCapitalizationExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Comparison\StringComparisonExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Concatinization\StringConcat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\StreamStringExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enum\AllowedString.cs" />

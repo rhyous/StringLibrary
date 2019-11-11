@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Comparison\StringComparisonExtensionsTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Concatinization\StringConcatTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\PrimitiveStringExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Conversion\StreamStringExtensionsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enum\AllowedStringTests.cs" />
