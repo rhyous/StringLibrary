@@ -27,6 +27,8 @@ namespace Rhyous.StringLibrary
             cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
             if (CustomConverterTypes.Contains(typeof(T)) && s.Count(c => c == cultureInfo.NumberFormat.NumberDecimalSeparator[0]) == 1)
                 return (T)Convert.ChangeType(ToLong(s, 0L, cultureInfo), typeof(T)); // First convert to long
+            if (typeof(T) == typeof(bool))
+                return (T)Convert.ChangeType(ToBool(s, false, cultureInfo), typeof(T));
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             try
             {
@@ -91,6 +93,20 @@ namespace Rhyous.StringLibrary
         public static string To(this string s, string defaultValue = null, CultureInfo cultureInfo = null)
         {
             return s;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="cultureInfo"></param>
+        /// <returns></returns>
+        public static bool To(this string s, bool defaultValue = false, CultureInfo cultureInfo = null)
+        {
+            if (s.All(c => char.IsDigit(c)))
+                return s.ToLong() > 0;
+            return s.To<bool>();
         }
 
         /// <summary>

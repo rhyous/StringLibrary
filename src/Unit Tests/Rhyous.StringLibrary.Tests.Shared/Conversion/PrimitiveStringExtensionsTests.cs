@@ -3,7 +3,7 @@ using System;
 using System.Globalization;
 using System.Reflection;
 
-namespace Rhyous.StringLibrary.Tests.Comparison
+namespace Rhyous.StringLibrary.Tests.Conversion
 {
     [TestClass]
     public class PrimitiveStringExtensionsTests
@@ -52,7 +52,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
         {
             // Arrange
             string s = "01/01/2017";
-            var expected = new DateTime(2017,1,1);
+            var expected = new DateTime(2017, 1, 1);
 
             // Act
             var actual = s.ToDate();
@@ -154,6 +154,20 @@ namespace Rhyous.StringLibrary.Tests.Comparison
         {
             var actual = "1".To<int>();
             Assert.AreEqual(1, actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_0_To_Bool_Test()
+        {
+            var actual = "0".To<bool>();
+            Assert.IsFalse(actual);
+        }
+
+        [TestMethod]
+        public void PrimitiveStringExtensions_1_To_Bool_Test()
+        {
+            var actual = "1".To<bool>();
+            Assert.IsTrue(actual);
         }
     }
 }
