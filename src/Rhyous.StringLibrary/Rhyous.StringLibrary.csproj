@@ -20,6 +20,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageTags>string extensions trim property wrap middletrim pluralization</PackageTags>
     <Copyright>Copyright (c) 2016, Jared Barneck (Rhyous)</Copyright>
+    <Description>A library to make common string functions easier, such as trimming, wrapping, pluralizing, and much more.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
