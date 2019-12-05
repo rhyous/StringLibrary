@@ -6,11 +6,20 @@
     <Authors>Jared Barneck (Rhyous)</Authors>
     <Company>Rhyous Publishing LLC</Company>
     <Product>Rhyous.StringLibrary</Product>
-    <Version>1.1.5</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.5.0</FileVersion>
+    <Version>1.2.4</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.4.0</FileVersion>
     <AssemblyName>Rhyous.StringLibrary</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/rhyous/StringLibrary</PackageProjectUrl>
+    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageIcon>string.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/rhyous/StringLibrary</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>string extensions trim property wrap middletrim pluralization</PackageTags>
+    <Copyright>Copyright (c) 2016, Jared Barneck (Rhyous)</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -20,5 +29,21 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="License.txt" />
+    <None Include="License.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="string.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="License.txt" />
+  </ItemGroup>
 
 </Project>
