@@ -1,5 +1,5 @@
 # StringLibrary
-A library to make string functions, such as trimming and much more, easier.
+A library to make common string functions easier, such as trimming, wrapping, pluralizing, and much more.
 
 ## Why you should use this library
 It will save you time. Yes, you can write your own string extension methods, but you also have to write unit tests for them. This library is fully unit tested so you can include it and move on.
