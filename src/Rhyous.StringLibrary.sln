@@ -3,15 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet", "NuGet\Rhyous.StringLibrary.NuGet\Rhyous.StringLibrary.NuGet.csproj", "{0451BAEF-DF2E-4B98-8644-94EE9415E389}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55} = {1CD5C8EF-0F18-4015-AE86-58E336F5AB55}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rhyous.StringLibrary.NuGet.Sources", "NuGet\Rhyous.StringLibrary.NuGet.Sources\Rhyous.StringLibrary.NuGet.Sources.csproj", "{8A44B2FA-517D-4DC0-AB3D-2608810B684E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary", "Rhyous.StringLibrary\Rhyous.StringLibrary.csproj", "{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rhyous.StringLibrary.Tests", "Rhyous.StringLibrary.Tests\Rhyous.StringLibrary.Tests.csproj", "{86D11BCC-3E1A-4923-B3E7-C27A6F659355}"
@@ -22,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A44B2FA-517D-4DC0-AB3D-2608810B684E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A44B2FA-517D-4DC0-AB3D-2608810B684E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CD5C8EF-0F18-4015-AE86-58E336F5AB55}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,10 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{0451BAEF-DF2E-4B98-8644-94EE9415E389} = {ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}
-		{8A44B2FA-517D-4DC0-AB3D-2608810B684E} = {ADCE154B-0E55-41CF-B4C4-FE42AF36A6D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68DC9A02-6A49-497C-9D08-8983A3E53F68}
