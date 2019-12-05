@@ -26,21 +26,18 @@ namespace Rhyous.StringLibrary
         {
             cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
             if (CustomConverterTypes.Contains(typeof(T)) && s.Count(c => c == cultureInfo.NumberFormat.NumberDecimalSeparator[0]) == 1)
-                return (T)Convert.ChangeType(ToLong(s, 0L, cultureInfo), typeof(T)); // First convert to long
+                return (T)System.Convert.ChangeType(ToLong(s, 0L, cultureInfo), typeof(T)); // First convert to long
             if (typeof(T) == typeof(bool))
-                return (T)Convert.ChangeType(ToBool(s, false, cultureInfo), typeof(T));
-            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-            try
-            {
-                return (T)converter.ConvertFromString(null, cultureInfo, s);
-            }
-            catch
-            {
-                return defaultValue;
-            }
+                return (T)System.Convert.ChangeType(ToBool(s, false, cultureInfo), typeof(T));
+            return s.Convert(defaultValue, cultureInfo);
         }
 
-
+        private static T Convert<T>(this string s, T defaultValue, CultureInfo cultureInfo)
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+            try { return (T)converter.ConvertFromString(null, cultureInfo, s); }
+            catch { return defaultValue; }
+        }
 
         private static HashSet<Type> CustomConverterTypes = new HashSet<Type>
         {
@@ -68,7 +65,7 @@ namespace Rhyous.StringLibrary
                 if (s.Count(c => c == separator[0]) == 1)
                 {
                     var d = s.To<double>();
-                    return Convert.ToInt64(d);
+                    return System.Convert.ToInt64(d);
                 }
                 return (long)converter.ConvertFromString(null, CultureInfo.InvariantCulture, s);
             }
@@ -106,7 +103,7 @@ namespace Rhyous.StringLibrary
         {
             if (s.All(c => char.IsDigit(c)))
                 return s.ToLong() > 0;
-            return s.To<bool>();
+            return s.Convert(defaultValue, cultureInfo);
         }
 
         /// <summary>
