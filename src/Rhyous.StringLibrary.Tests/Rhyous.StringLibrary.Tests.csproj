@@ -56,4 +56,10 @@
     <ProjectReference Include="..\Rhyous.StringLibrary\Rhyous.StringLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\ConcatData.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
