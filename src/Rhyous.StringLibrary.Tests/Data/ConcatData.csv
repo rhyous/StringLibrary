@@ -1,0 +1,13 @@
+left, right, separator, expected, Notes
+a, b, ?, a?b, Left and right set
+a?, b, ?, a?b, Left and right set, left has separator
+a, ?b, ?, a?b, Left and right set, right has separator
+a?, ?b, ?, a?b, Left and right set, both has separator
+a, b, /, a/b, Left and right set
+a/, b, /, a/b, Left and right set, left has separator
+a, /b, /, a/b, Left and right set, right has separator
+a/, /b, /, a/b, Left and right set, both has separator
+a, " b ", /, a/b, Left and right set, right with junk whitespace
+a, " / b ", /, a/b, Left and right set, right with junk whitespace
+" a ", b, ?, a?b, Left and right set, left with junk whitespace
+" a ? ", b, ?, a?b, Left and right set, left with junk whitespace

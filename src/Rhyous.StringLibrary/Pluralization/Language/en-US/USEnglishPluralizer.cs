@@ -20,8 +20,8 @@ namespace Rhyous.StringLibrary.Pluralization
         /// <summary>A list word endings that end in s but are singular.</summary>
         public List<string> SingularSEndings { get; } = new List<string> { "ss", "itis", "osis" };
         /// <summary>A list plurals that are irregular.</summary>
-        public HashSet<string> IrregularPlurals => (_IrregularPlurals == null || _IrregularPlurals.Count != PluralizationDictionary.Count) ? BuildHashSet() : _IrregularPlurals;
-        private HashSet<string> _IrregularPlurals;
+        public ICollection<string> IrregularPlurals => (_IrregularPlurals == null || _IrregularPlurals.Count != PluralizationDictionary.Count) ? BuildHashSet() : _IrregularPlurals;
+        private ICollection<string> _IrregularPlurals;
 
         /// <inheritdoc />
         public IDictionary<string, string> PluralizationDictionary
@@ -31,13 +31,13 @@ namespace Rhyous.StringLibrary.Pluralization
         } private IDictionary<string, string> _PluralizationDictionary;
 
         /// <summary>
-        /// A HashSet of Singular words ending with one s.
+        /// A ConcurrentHashSet of Singular words ending with one s.
         /// </summary>
-        public HashSet<string> SingularsEndingInOneS
+        public ICollection<string> SingularsEndingInOneS
         {
             get { return _SingularsEndingInOneS ?? (_SingularsEndingInOneS = new SingularNounsEndingInOneS()); }
             set { _SingularsEndingInOneS = value; }
-        } private HashSet<string> _SingularsEndingInOneS;
+        } private ICollection<string> _SingularsEndingInOneS;
         #endregion
 
         /// <summary>
@@ -144,9 +144,9 @@ namespace Rhyous.StringLibrary.Pluralization
         }
 
 
-        private HashSet<string> BuildHashSet()
+        private ICollection<string> BuildHashSet()
         {
-            _IrregularPlurals = new HashSet<string>();
+            _IrregularPlurals = new ConcurrentHashSet<string>();
             foreach (var plural in PluralizationDictionary.Values)
             {
                 _IrregularPlurals.Add(plural);

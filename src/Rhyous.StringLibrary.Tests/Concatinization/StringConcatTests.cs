@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System;
 
 namespace Rhyous.StringLibrary.Tests.Comparison
@@ -6,6 +7,8 @@ namespace Rhyous.StringLibrary.Tests.Comparison
     [TestClass]
     public class StringConcatTests
     {
+        public TestContext TestContext { get; set; }
+
         #region Argument null exception tests
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -132,5 +135,27 @@ namespace Rhyous.StringLibrary.Tests.Comparison
 
             Assert.AreEqual(expected, actual);
         }
+
+#if NETCOREAPP2_0
+#else
+        [TestMethod]
+        [TestCategory("DataDriven")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\ConcatData.csv", "ConcatData#csv", DataAccessMethod.Sequential)]
+        public void ConcatinizationExtensions_WithSeparator_Data_Test()
+        {
+            // Arrange
+            string left = TestContext.DataRow[0].ToString();
+            string right = TestContext.DataRow[1].ToString();
+            char separator = TestContext.DataRow[2].ToString().First();
+            string expected = TestContext.DataRow[3].ToString();
+            string actual;
+
+            // Act
+            actual = StringConcat.WithSeparator(separator, left, right);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+#endif
     }
 }

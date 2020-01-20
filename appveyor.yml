@@ -22,5 +22,7 @@ artifacts:
   - path: '**\*.nupkg'
 deploy:
 - provider: NuGet
+  on:
+    branch: master
   api_key:
     secure: YuESu/nQz4WK2RIjra4BXLJ7dDNM/7mJcKJAJQZCiYlKgMBPozzyCSRIBgu/72mC
