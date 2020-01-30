@@ -19,6 +19,8 @@ test:
     except:
     - slow
 artifacts:
+  on:
+    branch: master
   - path: '**\*.nupkg'
 deploy:
 - provider: NuGet
