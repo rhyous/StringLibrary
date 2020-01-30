@@ -6,9 +6,9 @@
     <Authors>Jared Barneck (Rhyous)</Authors>
     <Company>Rhyous Publishing LLC</Company>
     <Product>Rhyous.StringLibrary</Product>
-    <Version>1.2.4</Version>
+    <Version>1.2.17</Version>
     <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.4.0</FileVersion>
+    <FileVersion>1.2.17.0</FileVersion>
     <AssemblyName>Rhyous.StringLibrary</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

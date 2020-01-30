@@ -18,11 +18,12 @@ namespace Rhyous.StringLibrary
         /// <summary>
         /// A list of supported generic trimmable types.
         /// </summary>
-        public static List<Type> SupportedGenericTypes = new List<Type> {
+        public static List<Type> SupportedCollectionTypes = new List<Type> {
+            typeof(string),
             typeof(IList),
             typeof(IDictionary),
             typeof(IList<>),
-            typeof(IDictionary<,>)
+            typeof(IDictionary<,>),
         };
     }
 }

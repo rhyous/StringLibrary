@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 
 namespace Rhyous.StringLibrary
@@ -15,7 +16,7 @@ namespace Rhyous.StringLibrary
         /// <returns>True if the type is trimmable.</returns>
         public static bool IsTrimmable(this Type type)
         {
-            return !type.IsPrimitive && (!type.IsGenericType || type.IsSupportedGeneric());
+            return !type.IsPrimitive && (!type.IsEnumerable() || type.IsSupportedCollection());
         }
 
         /// <summary>
@@ -23,11 +24,11 @@ namespace Rhyous.StringLibrary
         /// </summary>
         /// <param name="type">the generic type.</param>
         /// <returns>True if the type is trimmable.</returns>
-        public static bool IsSupportedGeneric(this Type type)
+        public static bool IsSupportedCollection(this Type type)
         {
             while (type != null)
             {
-                var supportedTypes = TrimPropertiesSettings.SupportedGenericTypes;
+                var supportedTypes = TrimPropertiesSettings.SupportedCollectionTypes;
                 if (supportedTypes.Contains(type)
                     || (type.IsGenericType && (supportedTypes.Contains(type.GetGenericTypeDefinition())))
                     || type.GetInterfaces().Any(i => supportedTypes.Contains(i)))
@@ -37,6 +38,11 @@ namespace Rhyous.StringLibrary
                 type = type.BaseType;
             }
             return false;
+        }
+
+        public static bool IsEnumerable(this Type type)
+        {
+            return type.GetInterface(nameof(IEnumerable)) != null;
         }
     }
 }
