@@ -11,6 +11,8 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
 - pwsh: nuget restore src/Rhyous.StringLibrary.sln
+configuration:
+  Release
 build:
   project: src/Rhyous.StringLibrary.sln
   verbosity: minimal
