@@ -40,6 +40,11 @@ namespace Rhyous.StringLibrary
             return false;
         }
 
+        /// <summary>
+        /// Checks if a type is IEnumerable
+        /// </summary>
+        /// <param name="type">Any type.</param>
+        /// <returns>True if the type implements IEnumerable, false otherwise.</returns>
         public static bool IsEnumerable(this Type type)
         {
             return type.GetInterface(nameof(IEnumerable)) != null;
