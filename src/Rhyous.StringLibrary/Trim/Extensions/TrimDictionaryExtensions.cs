@@ -33,7 +33,7 @@ namespace Rhyous.StringLibrary
                 }
                 else
                 {
-                    if (type.IsTrimmable() && type.IsSupportedGeneric())
+                    if (type.IsTrimmable() && type.IsSupportedCollection())
                         dictionary[key].TrimStringProperties(objectsBeingTrimmed);
                 }
             }

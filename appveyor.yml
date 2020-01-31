@@ -18,6 +18,8 @@ test:
   categories:
     except:
     - slow
+nuget:
+  disable_publish_on_pr: true
 artifacts:
   - path: '**\*.nupkg'
 deploy:

@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace Rhyous.StringLibrary
-{ 
+{
     /// <summary>
-     /// Extensions for trimming string properties of any object. No matter how big the object,
-     /// how many string properties, or how many sub objects with string roperties, you can trim
-     /// and entire object with one line of code:
-     ///     obj.TrimStringProperties();
-     /// </summary>
+    /// Extensions for trimming string properties of any object. No matter how big the object,
+    /// how many string properties, or how many sub objects with string roperties, you can trim
+    /// and entire object with one line of code:
+    ///     obj.TrimStringProperties();
+    /// </summary>
     public static class TrimObjectExtensions
     {
         /// <summary>
@@ -28,8 +29,8 @@ namespace Rhyous.StringLibrary
             objectsBeingTrimmed = objectsBeingTrimmed ?? new List<object>();
             objectsBeingTrimmed.Add(obj);
 
-            if (obj.IsSupportedGeneric())
-                obj.TrimGeneric(objectsBeingTrimmed);
+            if (obj.IsSupportedCollection())
+                obj.TrimCollection(objectsBeingTrimmed);
 
             var properties = obj.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
             foreach (var prop in properties)
@@ -48,17 +49,25 @@ namespace Rhyous.StringLibrary
                     obj.TrimString(prop);
                     continue;
                 }
-                if (prop.PropertyType.IsSupportedGeneric())
+                if (prop.PropertyType.IsSupportedCollection())
                 {
-                    var generic = prop.GetValue(obj, null);
-                    generic.TrimGeneric(objectsBeingTrimmed);
-                    continue;
+                    try
+                    {
+                        var collection = prop.GetValue(obj, null);
+                        collection.TrimCollection(objectsBeingTrimmed);
+                        continue;
+                    }
+                    catch (Exception) { /* Ok. Fine. We won't trim. This exception is intentionally swallowed. */ }
                 }
-                var value = prop.GetValue(obj, null);
-                if (value != null)
+                try
                 {
-                    value.TrimStringProperties(objectsBeingTrimmed);
+                    var value = prop.GetValue(obj, null);
+                    if (value != null)
+                    {
+                        value.TrimStringProperties(objectsBeingTrimmed);
+                    }
                 }
+                catch (Exception) { /* Ok. Fine. We won't trim. This exception is intentionally swallowed. */ }
             }
         }
 
@@ -67,7 +76,7 @@ namespace Rhyous.StringLibrary
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="objectsBeingTrimmed"></param>
-        public static void TrimGeneric(this object obj, IList<object> objectsBeingTrimmed = null)
+        public static void TrimCollection(this object obj, IList<object> objectsBeingTrimmed = null)
         {
             var dictionary = obj as IDictionary;
             if (dictionary != null)
@@ -91,11 +100,15 @@ namespace Rhyous.StringLibrary
         /// <param name="objectsBeingTrimmed">A list of objects already being trimed.</param>
         public static void TrimObject(this object obj, PropertyInfo prop, IList<object> objectsBeingTrimmed = null)
         {
-            var value = prop.GetValue(obj, null);
-            if (value.GetType() == typeof(string))
-                obj.TrimString(prop);
-            else
-                value.TrimStringProperties(objectsBeingTrimmed);
+            try
+            {
+                var value = prop.GetValue(obj, null);
+                if (value.GetType() == typeof(string))
+                    obj.TrimString(prop);
+                else
+                    value.TrimStringProperties(objectsBeingTrimmed);
+            }
+            catch (Exception) { /* Ok. Fine. We won't trim. This exception is intentionally swallowed. */ }
         }
 
         /// <summary>
@@ -106,14 +119,18 @@ namespace Rhyous.StringLibrary
         public static void TrimString(this object obj, PropertyInfo stringProperty)
         {
             string currentValue;
-            if (stringProperty.GetSetMethod() == null || (currentValue = (string)stringProperty.GetValue(obj, null)) == null)
-                return;
-            stringProperty.SetValue(obj, currentValue.TrimAll(), null);
+            try
+            {
+                if (stringProperty.GetSetMethod() == null || (currentValue = (string)stringProperty.GetValue(obj, null)) == null)
+                    return;
+                stringProperty.SetValue(obj, currentValue.TrimAll(), null);
+            }
+            catch (Exception) { /* Ok. Fine. We won't trim. This exception is intentionally swallowed. */ }
         }
 
-        internal static bool IsSupportedGeneric(this object o)
+        internal static bool IsSupportedCollection(this object o)
         {
-            return o.GetType().IsSupportedGeneric();
+            return o.GetType().IsSupportedCollection();
         }
 
         internal static bool IsAlreadyBeingTrimmed(this object obj, IList<object> objectsBeingTrimmed)

@@ -1,18 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Rhyous.StringLibrary.Tests
 {
     public class TestObject
     {
         public int Id { get; set; }
-        public string String1 { get; set; }
+        public string Value { get; set; }
         public SubTestObject Sub { get; set; }
     }
 
     public class SubTestObject
     {
         public int Id { get; set; }
-        public string String2 { get; set; }
+        public string SubValue { get; set; }
+    }
+
+    public class TestObjectGeneric<T>
+    {
+        public int Id { get; set; }
+        public T Value { get; set; }
+        public SubTestObjectGeneric<T> Sub { get; set; }
+    }
+
+    public class SubTestObjectGeneric<T>
+    {
+        public int Id { get; set; }
+        public T SubValue { get; set; }
     }
 
     public class Getter
@@ -43,6 +57,28 @@ namespace Rhyous.StringLibrary.Tests
     {
         public string Name { get; set; }
         public object StringAsObject { get; set; }
+    }
+
+    public class ObjectThatThrowsOnSet<T>
+    {
+        public ObjectThatThrowsOnSet(T value) { _Value = value; }
+
+        public T Value
+        {
+            get { return _Value; }
+            set { throw new NotImplementedException(); }
+        } private T _Value;
+    }
+
+    public class ObjectThatThrowsOnGet<T>
+    {
+        public ObjectThatThrowsOnGet(T value) { _Value = value; }
+
+        public T Value
+        {
+            get { throw new NotImplementedException(); }
+            set { _Value = value; }
+        } private T _Value;
     }
 
     public enum TestEnum
