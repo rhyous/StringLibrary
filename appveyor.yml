@@ -9,8 +9,7 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-nuget:
-  disable_publish_on_pr: true
+before_build:
 - pwsh: nuget restore src/Rhyous.StringLibrary.sln
 build:
   project: src/Rhyous.StringLibrary.sln
@@ -19,6 +18,8 @@ test:
   categories:
     except:
     - slow
+nuget:
+  disable_publish_on_pr: true
 artifacts:
   - path: '**\*.nupkg'
 deploy:
