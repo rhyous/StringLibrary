@@ -11,7 +11,7 @@
     <FileVersion>1.2.17.0</FileVersion>
     <AssemblyName>Rhyous.StringLibrary</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/rhyous/StringLibrary</PackageProjectUrl>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <PackageIcon>string.png</PackageIcon>
@@ -23,11 +23,7 @@
     <Description>A library to make common string functions easier, such as trimming, wrapping, pluralizing, and much more.</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <PropertyGroup >
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
   </PropertyGroup>
 
