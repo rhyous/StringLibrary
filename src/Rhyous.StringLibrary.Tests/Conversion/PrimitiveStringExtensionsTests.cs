@@ -61,6 +61,32 @@ namespace Rhyous.StringLibrary.Tests.Conversion
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test converting a string to a DateTimeOffset.
+        /// </summary>
+        /// <remarks>
+        /// During Daylight savings time (MDT), DateTimeOffset.Now.Offset (-0600) is one hour different 
+        /// than DateTimeOffset.Parse("01/01/2017").OffSet (-0700). It was my expectation that they would
+        /// be the same. I was disappointed that they were different. DateTime.Parse is not taking into
+        /// account Daylight savings time. So the offset is required.
+        /// </remarks>
+        [TestMethod]
+        public void ToDateTimeOffsetTest()
+        {
+            // Arrange
+            var now = DateTimeOffset.Now;
+            var offset = now.Offset;
+            var offsetStr = now.ToString("zzz");
+            string s = $"01/01/2017 00:00:00 {offsetStr}";
+            var expected = new DateTimeOffset(2017, 1, 1, 0, 0, 0, offset);
+
+            // Act
+            var actual = s.ToDateTimeOffSet();
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
         [TestMethod]
         public void ToGenericAndToType_Enum_Test()
         {
