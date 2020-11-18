@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP2_0
-#else
+﻿#if NET461
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -56,7 +55,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
             Assert.AreEqual(expectedResult, result, message);
         }
 
-        #region Class
+#region Class
         public class ModelA
         {
             public int Id { get; set; }
@@ -64,7 +63,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
             public DateTime Date { get; set; }
             public Guid Guid { get; set; }
         }
-        #endregion
+#endregion
 
     }
 }

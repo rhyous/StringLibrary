@@ -22,8 +22,7 @@ namespace Rhyous.StringLibrary.Tests.Conversion
             Assert.IsNull("10".To<object>());
         }
 
-#if NETCOREAPP2_0
-#else
+#if NET461
         /// <summary>
         /// Tests both the ToGeneric and the ToType methods
         /// </summary>

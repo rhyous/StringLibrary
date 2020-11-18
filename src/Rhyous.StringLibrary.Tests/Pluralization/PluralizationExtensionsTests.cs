@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP2_0
-#else
+﻿#if NET461
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhyous.StringLibrary.Pluralization;
 using System.Globalization;
@@ -12,7 +11,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         public TestContext TestContext { get; set; }
 
         // The below three tests will fail on non-english languages until a Pluralizer is written for that language.
-        #region Default to the computers localization. 
+#region Default to the computers localization. 
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
         public void PluralizationExtensions_Pluralize_Irregular_YourComputersLanguage_Test()
@@ -74,9 +73,9 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
         }
-        #endregion
+#endregion
 
-        #region en-US
+#region en-US
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
         public void PluralizationExtensions_Pluralize_Irregular_enUS_Test()
@@ -138,9 +137,9 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
         }
-        #endregion
+#endregion
 
-        #region en-GB
+#region en-GB
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
         public void PluralizationExtensions_Pluralize_Irregular_enGB_Test()
@@ -202,9 +201,9 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
         }
-        #endregion
+#endregion
 
-        #region Pluralize single word tests
+#region Pluralize single word tests
         [TestMethod]
         public void PluralizationExtensions_Pluralize_OneWord_Test()
         {
@@ -244,7 +243,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             var actualPlural = noun.Pluralize(null, new CultureInfo("es-ES"));
         }
-        #endregion
+#endregion
     }
 }
 #endif

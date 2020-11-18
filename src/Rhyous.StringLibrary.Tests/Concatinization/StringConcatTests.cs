@@ -136,8 +136,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.AreEqual(expected, actual);
         }
 
-#if NETCOREAPP2_0
-#else
+#if NET461
         [TestMethod]
         [TestCategory("DataDriven")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\ConcatData.csv", "ConcatData#csv", DataAccessMethod.Sequential)]
