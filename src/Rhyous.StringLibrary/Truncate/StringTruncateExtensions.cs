@@ -13,7 +13,7 @@
         /// <returns></returns>
         public static string Truncate(this string s, int maxLength)
         {
-            if (string.IsNullOrEmpty(s) || s.Length <= maxLength)
+            if (s == null || s.Length <= maxLength)
                 return s;
             return s.Substring(0, maxLength);
         }
