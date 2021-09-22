@@ -181,6 +181,17 @@ namespace Rhyous.StringLibrary
             return To(s, defaultValue, cultureInfo);
         }
         /// <summary>
+        /// Converts a string to a DateTime.
+        /// </summary>
+        /// <param name="s">The string</param>
+        /// <param name="defaultValue">The default value if conversion fails.</param>
+        /// <param name="cultureInfo">The culture.</param>
+        /// <returns>The string converted to a DateTime.</returns>
+        public static DateTimeOffset ToDateTimeOffSet(this string s, DateTimeOffset defaultValue = default(DateTimeOffset), CultureInfo cultureInfo = null)
+        {
+            return To(s, defaultValue, cultureInfo);
+        }
+        /// <summary>
         /// Converts a string to a decimal.
         /// </summary>
         /// <param name="s">The string</param>

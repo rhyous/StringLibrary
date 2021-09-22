@@ -16,6 +16,8 @@ namespace Rhyous.StringLibrary
         /// <returns>A trimmed string.</returns>
         public static string TrimAll(this string value)
         {
+            if (value == null || value.Length == 0)
+                return value;
             var trimmedValue = new StringBuilder();
             char previousChar = (char)0;
             foreach (char c in value)

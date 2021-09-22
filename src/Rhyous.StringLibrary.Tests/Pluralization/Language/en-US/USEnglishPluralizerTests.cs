@@ -1,5 +1,4 @@
-﻿#if NETCOREAPP2_0
-#else
+﻿#if NET461
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhyous.StringLibrary.Pluralization;
 

@@ -23,7 +23,7 @@
     <Description>A library to make common string functions easier, such as trimming, wrapping, pluralizing, and much more.</Description>
   </PropertyGroup>
 
-  <PropertyGroup >
+  <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\netstandard2.0\Rhyous.StringLibrary.xml</DocumentationFile>
   </PropertyGroup>
 
