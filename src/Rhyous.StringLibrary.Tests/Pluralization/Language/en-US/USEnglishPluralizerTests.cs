@@ -10,7 +10,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
     {
         public TestContext TestContext { get; set; }
 
-#region Pluralize
+        #region Pluralize
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
         public void USEnglishPluralizer_Pluralize_Irregular_Test()
@@ -69,9 +69,9 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
         }
-#endregion
+        #endregion
 
-#region ApplyStandardPluralizationRules
+        #region ApplyStandardPluralizationRules
         [TestMethod]
         public void USEnglishPluralizer_ApplyStandardPluralizationRules_Null_Test()
         {
@@ -110,9 +110,9 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(noun, actualPlural);
         }
-#endregion
+        #endregion
 
-#region IsPlural
+        #region IsPlural
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\CustomPluralizers.csv", "CustomPluralizers#csv", DataAccessMethod.Sequential)]
         public void USEnglishPluralizer_IsPlural_CustomAddition_Test()
         {
@@ -126,7 +126,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.IsTrue(pluralizer.IsPlural(plural));
         }
-#endregion
+        #endregion
     }
 }
 #endif
