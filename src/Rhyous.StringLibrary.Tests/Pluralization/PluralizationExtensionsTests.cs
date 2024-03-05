@@ -1,6 +1,8 @@
-﻿#if NET461
+﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhyous.EasyCsv;
 using Rhyous.StringLibrary.Pluralization;
+using Rhyous.UnitTesting;
 using System.Globalization;
 
 namespace Rhyous.StringLibrary.Tests.Pluralization
@@ -8,17 +10,17 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
     [TestClass]
     public class PluralizationExtensionsTests
     {
-        public TestContext TestContext { get; set; }
 
         // The below three tests will fail on non-english languages until a Pluralizer is written for that language.
         #region Default to the computers localization. 
+
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Irregular_YourComputersLanguage_Test()
+        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Irregular_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize();
@@ -28,12 +30,27 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\RegularEnglishNouns.csv", "RegularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Regular_YourComputersLanguage_Test()
+        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Regular_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
+
+            // Act
+            var actualPlural = noun.Pluralize();
+
+            // Assert
+            Assert.AreEqual(expectedPlural, actualPlural);
+        }
+        
+        [TestMethod]
+        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_YourComputersLanguage_Test(Row<string> row)
+        {
+            // Arrange
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize();
@@ -43,27 +60,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\AlphabetAndNumbers.csv", "AlphabetAndNumbers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_YourComputersLanguage_Test()
+        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        public void PluralizationExtensions_Pluralize_CustomAddition_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
-
-            // Act
-            var actualPlural = noun.Pluralize();
-
-            // Assert
-            Assert.AreEqual(expectedPlural, actualPlural);
-        }
-
-        [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\CustomPluralizers.csv", "CustomPluralizers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_CustomAddition_YourComputersLanguage_Test()
-        {
-            // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             IETFLanguageTagDictionary.Instance[CultureInfo.CurrentCulture.TwoLetterISOLanguageName].PluralizationDictionary.Add(noun, expectedPlural);
 
@@ -77,12 +79,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
 
         #region en-US
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Irregular_enUS_Test()
+        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Irregular_enUS_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-US"));
@@ -92,12 +94,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\RegularEnglishNouns.csv", "RegularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Regular_enUS_Test()
+        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Regular_enUS_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-US"));
@@ -107,12 +109,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\AlphabetAndNumbers.csv", "AlphabetAndNumbers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enUS_Test()
+        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enUS_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-US"));
@@ -122,12 +124,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\CustomPluralizers.csv", "CustomPluralizers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_CustomAddition_enUS_Test()
+        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        public void PluralizationExtensions_Pluralize_CustomAddition_enUS_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             IETFLanguageTagDictionary.Instance["en-US"].PluralizationDictionary.Add(noun, expectedPlural);
 
@@ -141,12 +143,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
 
         #region en-GB
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Irregular_enGB_Test()
+        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Irregular_enGB_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-GB"));
@@ -156,12 +158,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\RegularEnglishNouns.csv", "RegularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_Regular_enGB_Test()
+        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        public void PluralizationExtensions_Pluralize_Regular_enGB_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-GB"));
@@ -171,12 +173,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\AlphabetAndNumbers.csv", "AlphabetAndNumbers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enGB_Test()
+        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enGB_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = noun.Pluralize(null, new CultureInfo("en-GB"));
@@ -186,12 +188,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\CustomPluralizers.csv", "CustomPluralizers#csv", DataAccessMethod.Sequential)]
-        public void PluralizationExtensions_Pluralize_CustomAddition_enGB_Test()
+        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        public void PluralizationExtensions_Pluralize_CustomAddition_enGB_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             IETFLanguageTagDictionary.Instance["en"].PluralizationDictionary.Add(noun, expectedPlural);
 
@@ -246,4 +248,3 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         #endregion
     }
 }
-#endif

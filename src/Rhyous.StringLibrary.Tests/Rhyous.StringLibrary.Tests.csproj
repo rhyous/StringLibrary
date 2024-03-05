@@ -1,66 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5;net461</TargetFrameworks>
+    <TargetFramework>net8.0</TargetFramework>
     <Authors>Jared Barneck (Rhyous)</Authors>
     <Company>Rhyous Publishing LLC</Company>
-    <Version>1.0.0</Version>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <AssemblyName>Rhyous.StringLibrary.Tests</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary.Tests</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\AlphabetAndNumbers.csv" />
-    <None Remove="Data\CustomPluralizers.csv" />
-    <None Remove="Data\IrregularEnglishNouns.csv" />
-    <None Remove="Data\LambdaStrings.xml" />
-    <None Remove="Data\ParameterValueStrings.xml" />
-    <None Remove="Data\PrimitiveConversions.xml" />
-    <None Remove="Data\RegularEnglishNouns.csv" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Data\AlphabetAndNumbers.csv">
+    <None Include="Data\AlphabetAndNumbers.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\CustomPluralizers.csv">
+    </None>
+    <None Include="Data\CustomPluralizers.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\IrregularEnglishNouns.csv">
+    </None>
+    <None Include="Data\IrregularEnglishNouns.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\LambdaStrings.xml">
+    </None>
+    <None Include="Data\LambdaStrings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\ParameterValueStrings.xml">
+    </None>
+    <None Include="Data\ParameterValueStrings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\PrimitiveConversions.xml">
+    </None>
+    <None Include="Data\PrimitiveConversions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\RegularEnglishNouns.csv">
+    </None>
+    <None Include="Data\RegularEnglishNouns.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageReference Include="Rhyous.EasyCsv" Version="1.2.3" />
     <PackageReference Include="Rhyous.UnitTesting" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Rhyous.StringLibrary\Rhyous.StringLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Data\ConcatData.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

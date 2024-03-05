@@ -1,6 +1,7 @@
-﻿#if NET461
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhyous.EasyCsv;
 using Rhyous.StringLibrary.Pluralization;
+using Rhyous.UnitTesting;
 
 
 namespace Rhyous.StringLibrary.Tests.Pluralization
@@ -8,16 +9,14 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
     [TestClass]
     public class USEnglishPluralizerTests
     {
-        public TestContext TestContext { get; set; }
-
         #region Pluralize
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\IrregularEnglishNouns.csv", "IrregularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void USEnglishPluralizer_Pluralize_Irregular_Test()
+        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        public void USEnglishPluralizer_Pluralize_Irregular_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = new USEnglishPluralizer().Pluralize(noun);
@@ -27,12 +26,12 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\RegularEnglishNouns.csv", "RegularEnglishNouns#csv", DataAccessMethod.Sequential)]
-        public void USEnglishPluralizer_Pluralize_Regular_Test()
+        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        public void USEnglishPluralizer_Pluralize_Regular_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string expectedPlural = row[1];
 
             // Act
             var actualPlural = new USEnglishPluralizer().Pluralize(noun);
@@ -40,15 +39,14 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
         }
-
+        
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\AlphabetAndNumbers.csv", "AlphabetAndNumbers#csv", DataAccessMethod.Sequential)]
-        public void USEnglishPluralizer_Pluralize_AlphabetAndNumbers_Test()
+        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        public void USEnglishPluralizer_Pluralize_AlphabetAndNumbers_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string expectedPlural = TestContext.DataRow["ExpectedPlural"].ToString();
-
+            string noun = row[0];
+            string expectedPlural = row[1];
             // Act
             var actualPlural = new USEnglishPluralizer().Pluralize(noun);
 
@@ -72,6 +70,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         #endregion
 
         #region ApplyStandardPluralizationRules
+
         [TestMethod]
         public void USEnglishPluralizer_ApplyStandardPluralizationRules_Null_Test()
         {
@@ -113,12 +112,13 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         #endregion
 
         #region IsPlural
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\CustomPluralizers.csv", "CustomPluralizers#csv", DataAccessMethod.Sequential)]
-        public void USEnglishPluralizer_IsPlural_CustomAddition_Test()
+
+        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        public void USEnglishPluralizer_IsPlural_CustomAddition_Test(Row<string> row)
         {
             // Arrange
-            string noun = TestContext.DataRow["Noun"].ToString();
-            string plural = TestContext.DataRow["ExpectedPlural"].ToString();
+            string noun = row[0];
+            string plural = row[1];
             var pluralizer = new USEnglishPluralizer();
             pluralizer.PluralizationDictionary.Add(noun, plural);
 
@@ -129,4 +129,3 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         #endregion
     }
 }
-#endif

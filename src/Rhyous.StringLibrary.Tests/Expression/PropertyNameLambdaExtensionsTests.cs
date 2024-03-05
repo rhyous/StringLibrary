@@ -1,6 +1,9 @@
-﻿#if NET461
-using System;
+﻿
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhyous.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Rhyous.StringLibrary.Tests.Expression
 {
@@ -10,18 +13,18 @@ namespace Rhyous.StringLibrary.Tests.Expression
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", @"Data\LambdaStrings.xml", "Row", DataAccessMethod.Sequential)]
-        public void PropertyNameLambdaExtensions_TestToLambda_TypeParams()
+        [XmlTestDataSource(typeof(LambdaStringRows), @"Data\LambdaStrings.xml", "ExpectedExpression")]
+        public void PropertyNameLambdaExtensions_TestToLambda_TypeParams(LambdaStringRow row)
         {
             // Arrange
             var a = new ModelA { Id = 1, Name = "ABC", Date = new DateTime(2017, 1, 1), Guid = new Guid("{C1AA6176-425D-4981-BE4A-8F5C459E0FF9}") };
-            var prop = TestContext.DataRow["Property"].ToString();
-            var type = Type.GetType(TestContext.DataRow["Type"].ToString());
-            var value = TestContext.DataRow["Value"].ToString().ToType(type);
-            var method = TestContext.DataRow["Method"].ToString();
-            var expectedExpression = TestContext.DataRow["ExpectedExpression"].ToString();
-            var expectedResult = TestContext.DataRow["ExpectedResult"].ToString().ToBool();
-            var message = TestContext.DataRow["Message"].ToString();
+            var prop = row.Property;
+            var type = Type.GetType(row.Type);
+            var value = row.Value.ToType(type);
+            var method = row.Method;
+            var expectedExpression = row.ExpectedExpression;
+            var expectedResult = row.ExpectedResult.To<bool>();
+            var message = row.Message;
 
             // Act
             var expression = prop.ToLambda<ModelA>(type, new object[] { value, method });
@@ -66,5 +69,22 @@ namespace Rhyous.StringLibrary.Tests.Expression
         #endregion
 
     }
+
+    [XmlRoot("Row")]
+    [XmlType("Row")]
+    public class LambdaStringRow
+    {
+        public string Property { get; set; }
+        public string Value { get; set; }
+        public string Type { get; set; }
+        public string Method { get; set; }
+        public string ExpectedExpression { get; set; }
+        public string ExpectedResult { get; set; }
+        public string Message { get; set; }
+    }
+
+    [XmlRoot("Rows")]
+    public class LambdaStringRows : List<LambdaStringRow>
+    {
+    }
 }
-#endif

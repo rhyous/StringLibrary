@@ -136,25 +136,28 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             Assert.AreEqual(expected, actual);
         }
 
-#if NET461
         [TestMethod]
-        [TestCategory("DataDriven")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"Data\ConcatData.csv", "ConcatData#csv", DataAccessMethod.Sequential)]
-        public void ConcatinizationExtensions_WithSeparator_Data_Test()
+        //       left, right, separator, expected, Notes                                  
+        [DataRow("a", "b", '?', "a?b", "Left and right set")]
+        [DataRow("a?", "b", '?', "a?b", "Left and right set. Left has separator")]
+        [DataRow("a", "?b", '?', "a?b", "Left and right set. Right has separator")]
+        [DataRow("a?", "?b", '?', "a?b", "Left and right set. Both have separator")]
+        [DataRow("a", "b", '/', "a/b", "Left and right set. Neither has separator")]
+        [DataRow("a/", "b", '/', "a/b", "Left and right set. Left has separator")]
+        [DataRow("a", "/b", '/', "a/b", "Left and right set. Right has separator")]
+        [DataRow("a/", "/b", '/', "a/b", "Left and right set. Both have separator")]
+        [DataRow("a", " b ", '/', "a/b", "Left and right set. Right with junk whitespace")]
+        [DataRow("a", " / b ", '/', "a/b", "Left and right set. Right with junk whitespace")]
+        [DataRow(" a ", "b", '?', "a?b", "Left and right set. Left with junk whitespace")]
+        [DataRow(" a ? ", "b", '?', "a?b", "Left and right set. Left with junk whitespace")]
+        public void ConcatinizationExtensions_WithSeparator_Data_Test(string left, string right, char separator, string expected, string notes)
         {
             // Arrange
-            string left = TestContext.DataRow[0].ToString();
-            string right = TestContext.DataRow[1].ToString();
-            char separator = TestContext.DataRow[2].ToString().First();
-            string expected = TestContext.DataRow[3].ToString();
-            string actual;
-
             // Act
-            actual = StringConcat.WithSeparator(separator, left, right);
+            var actual = StringConcat.WithSeparator(separator, left, right);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actual, notes);
         }
-#endif
     }
 }

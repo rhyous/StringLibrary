@@ -1,17 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Rhyous.StringLibrary</PackageId>
     <Authors>Jared Barneck (Rhyous)</Authors>
     <Company>Rhyous Publishing LLC</Company>
     <Product>Rhyous.StringLibrary</Product>
-    <Version>1.2.17</Version>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.17.0</FileVersion>
     <AssemblyName>Rhyous.StringLibrary</AssemblyName>
     <RootNamespace>Rhyous.StringLibrary</RootNamespace>
     <GeneratePackageOnBuild Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">true</GeneratePackageOnBuild>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\Rhyous.snk</AssemblyOriginatorKeyFile>
     <PackageProjectUrl>https://github.com/rhyous/StringLibrary</PackageProjectUrl>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
     <PackageIcon>string.png</PackageIcon>

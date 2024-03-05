@@ -1,7 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhyous.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
+using System.Xml.Serialization;
 
 namespace Rhyous.StringLibrary.Tests.Conversion
 {
@@ -22,29 +25,43 @@ namespace Rhyous.StringLibrary.Tests.Conversion
             Assert.IsNull("10".To<object>());
         }
 
-#if NET461
         /// <summary>
         /// Tests both the ToGeneric and the ToType methods
         /// </summary>
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", @"Data\PrimitiveConversions.xml", "Row", DataAccessMethod.Sequential)]
-        public void ToGenericAndToTypeTest()
+        [XmlTestDataSource(typeof(PrimitiveConversionRows), @"Data\PrimitiveConversions.xml", "Type,String")]
+        public void ToGenericAndToTypeTest(PrimitiveConversionRow row)
         {
             // Arrange
-            string s = TestContext.DataRow[0].ToString();
-            var type = Type.GetType(TestContext.DataRow[1].ToString());
-            string expected = TestContext.DataRow[2].ToString();
+            string s = row.String;
+            var type = Type.GetType(row.Type);
+            string expected =row.Expected;
             if (string.IsNullOrWhiteSpace(expected))
                 expected = s;
+            var message = row.Message;
 
             // Act
             var actual = s.ToType(type);
 
             // Assert
             Assert.AreEqual(type, actual.GetType());
-            Assert.AreEqual(expected, actual.ToString());
+            Assert.AreEqual(expected, actual.ToString(), message);
         }
-#endif
+
+        [XmlRoot("Row")]
+        [XmlType("Row")]
+        public class PrimitiveConversionRow
+        {
+            public string String { get; set; }
+            public string Type { get; set; }
+            public string Expected { get; set; }
+            public string Message { get; set; }
+        }
+
+        [XmlRoot("Rows")]
+        public class PrimitiveConversionRows : List<PrimitiveConversionRow>
+        {
+        }
 
         [TestMethod]
         public void ToDateTimeTest()

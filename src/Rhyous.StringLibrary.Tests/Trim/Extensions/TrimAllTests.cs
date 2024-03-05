@@ -1,5 +1,8 @@
-﻿#if NET461
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rhyous.StringLibrary.Tests.Expression;
+using Rhyous.UnitTesting;
+using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Rhyous.StringLibrary.Tests
 {
@@ -9,13 +12,13 @@ namespace Rhyous.StringLibrary.Tests
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", @"Data\ParameterValueStrings.xml", "Row", DataAccessMethod.Sequential)]
-        public void TestTrimAll()
+        [XmlTestDataSource(typeof(ParameterValueStringRows), @"Data\ParameterValueStrings.xml", "Value")]
+        public void TestTrimAll(ParameterValueStringRow row)
         {
             // Arrange
-            string stringWithInvalidSpace = TestContext.DataRow[0].ToString().Unquote();
-            string expectedTrimmedString = TestContext.DataRow[1].ToString().Unquote();
-            string message = TestContext.DataRow[2].ToString().Unquote();
+            string stringWithInvalidSpace = row.Value.Unquote();
+            string expectedTrimmedString = row.ExpectedValue.Unquote();
+            string message = row.Message.Unquote();
 
             // Act
             var actual = stringWithInvalidSpace.TrimAll();
@@ -25,5 +28,18 @@ namespace Rhyous.StringLibrary.Tests
             Assert.AreEqual(expectedTrimmedString, actual, message);
         }
     }
+
+    [XmlRoot("Row")]
+    [XmlType("Row")]
+    public class ParameterValueStringRow
+    {
+        public string Value { get; set; }
+        public string ExpectedValue { get; set; }
+        public string Message { get; set; }
+    }
+
+    [XmlRoot("Rows")]
+    public class ParameterValueStringRows : List<ParameterValueStringRow>
+    {
+    }
 }
-#endif
