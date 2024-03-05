@@ -24,7 +24,7 @@ namespace Rhyous.StringLibrary
         /// <returns>A conversion to type T.</returns>
         public static T To<T>(this string s, T defaultValue = default(T), CultureInfo cultureInfo = null)
         {
-            cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
+            cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture ?? CultureInfo.InvariantCulture;
             if (CustomConverterTypes.Contains(typeof(T)) && s.Count(c => c == cultureInfo.NumberFormat.NumberDecimalSeparator[0]) == 1)
                 return (T)System.Convert.ChangeType(ToLong(s, 0L, cultureInfo), typeof(T)); // First convert to long
             if (typeof(T) == typeof(bool))
@@ -60,7 +60,7 @@ namespace Rhyous.StringLibrary
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(long));
             try
             {
-                cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
+                cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture ?? CultureInfo.InvariantCulture;
                 string separator = cultureInfo.NumberFormat.NumberDecimalSeparator;
                 if (s.Count(c => c == separator[0]) == 1)
                 {
@@ -118,7 +118,7 @@ namespace Rhyous.StringLibrary
         /// TypeConverter it may still work.</remarks>
         public static object ToType(this string s, Type type, object defaultValue = null, CultureInfo cultureInfo = null)
         {
-            cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
+            cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture ?? CultureInfo.InvariantCulture;
             if (type == typeof(string))
                 return s;
             if (type.IsEnum)
@@ -137,7 +137,7 @@ namespace Rhyous.StringLibrary
 
         private static object ToPrimitiveOrNullable(string s, Type type, ref object defaultValue, bool isGeneric, CultureInfo cultureInfo = null)
         {
-            cultureInfo = cultureInfo ?? CultureInfo.InvariantCulture;
+            cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture ?? CultureInfo.InvariantCulture;
             var mi = typeof(PrimitiveStringExtensions).GetMethods().Single(m => m.Name == "To" && m.IsGenericMethod && m.ReturnParameter.ParameterType.IsGenericType == isGeneric);
             var method = mi.MakeGenericMethod(type);
             // Check if it is DateTime to handle this critical .NET bug

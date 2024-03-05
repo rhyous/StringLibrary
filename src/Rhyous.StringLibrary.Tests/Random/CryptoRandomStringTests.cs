@@ -42,6 +42,7 @@ namespace Rhyous.StringLibrary.Tests
         } // Elapsed Milliseconds 320 (it fluxuated a few milliseconds each run) 
 
         [TestMethod]
+        [DoNotParallelize]
         [TestCategory("Performance")]
         public void TestPerformanceLoop()
         {

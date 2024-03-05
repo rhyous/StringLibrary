@@ -182,7 +182,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             IETFLanguageTagDictionary.Instance["en"].PluralizationDictionary.Add(noun, expectedPlural);
 
             // Act
-            var actualPlural = noun.Pluralize();
+            var actualPlural = noun.Pluralize(null, new CultureInfo("en-GB"));
 
             // Assert
             Assert.AreEqual(expectedPlural, actualPlural);
