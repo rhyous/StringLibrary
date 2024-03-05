@@ -30,10 +30,16 @@ namespace Rhyous.UnitTesting
         /// <returns></returns>
         public IEnumerable<object[]> GetData(MethodInfo methodInfo)
         {
-            if (!File.Exists(_File))
-                throw new FileNotFoundException($"Could not find csv file: {_File}. Searched using working directory: {Path.Combine(Directory.GetCurrentDirectory())}.");
+            var file = _File;
+            if (!File.Exists(file))
+            {
+                // Try full path
+                file = Path.Combine(Directory.GetCurrentDirectory(), file);
+                if (!File.Exists(file))
+                    throw new FileNotFoundException($"Could not find test data file. Searched:{Environment.NewLine}{_File}{Environment.NewLine}{file}");
+            }
 
-            var csv = new Csv(_File);
+            var csv = new Csv(file);
             foreach (var row in csv.Rows)
                 yield return new object[] { row };
         }

@@ -37,13 +37,19 @@ namespace Rhyous.UnitTesting
         /// <returns></returns>
         public IEnumerable<object[]> GetData(MethodInfo methodInfo)
         {
-            if (!File.Exists(_File))
-                throw new FileNotFoundException($"Could not find Xml file: {_File}. Searched using working directory: {Path.Combine(Directory.GetCurrentDirectory())}.");
+            var file = _File;
+            if (!File.Exists(file))
+            {
+                // Try full path
+                file = Path.Combine(Directory.GetCurrentDirectory(), file);
+                if (!File.Exists(file))
+                    throw new FileNotFoundException($"Could not find test data file. Searched:{Environment.NewLine}{_File}{Environment.NewLine}{file}");
+            }
             if (!typeof(IEnumerable).IsAssignableFrom(_Type))
                 throw new ArgumentException($"The type {_Type} must implement IEnumerable.");
 
             XmlSerializer xmlSerializer = new XmlSerializer(_Type);
-            TextReader textReader = new StreamReader(_File);
+            TextReader textReader = new StreamReader(file);
             XmlTextReader xmlTextReader = new XmlTextReader(textReader);
             xmlTextReader.Read();
             var result = xmlSerializer.Deserialize(xmlTextReader) as IEnumerable;
