@@ -18,7 +18,7 @@ namespace Rhyous.StringLibrary.Pluralization
         public static string Pluralize(this string noun, IDictionary<string, string> customPluralizationDictionary = null, CultureInfo culture = null)
         {
             string plural = null;
-            culture = culture ?? CultureInfo.CurrentCulture;
+            culture = culture ?? CultureInfo.CurrentCulture ?? CultureInfo.GetCultureInfo("en-US");
             // We need to check the specific and less specific dictionaries for a custom plural before applying standard pluralization.
             IPluralizer[] pluralizers = new IPluralizer[2];
             plural = noun.PluralizeByCustomDictionaries(customPluralizationDictionary, culture, pluralizers);

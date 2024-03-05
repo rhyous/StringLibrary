@@ -55,7 +55,7 @@ jobs:
       - name: Get Build Number with base offset
         uses: mlilback/build-number@v1
         with:
-          base: -5
+          base: -7
           run-id: ${{github.run_number}}
         
       # Build - Main
@@ -71,7 +71,7 @@ jobs:
       # Run Unit Tests
       # Add coverlet.collector nuget package to test project - 'dotnet add <TestProject.cspoj> package coverlet
       - name: Run Tests
-        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage --filter TestCategory!=SkipCI
+        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage --filter TestCategory!=Performance
         
       # Install ReportGenerator
       - name: Install ReportGenerator
@@ -102,7 +102,12 @@ jobs:
         with:
           recreate: true
           path: code-coverage-results.md
-
+      
+      # Run Performance Tests
+      # Add coverlet.collector nuget package to test project - 'dotnet add <TestProject.cspoj> package coverlet
+      - name: Run Tests
+        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage --filter TestCategory=Performance
+        
       # Publish NuGet
       - name: Publish the NuGet package
         if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master' }}
