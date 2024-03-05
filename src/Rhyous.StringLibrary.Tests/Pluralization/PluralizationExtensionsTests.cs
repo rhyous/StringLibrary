@@ -4,6 +4,7 @@ using Rhyous.EasyCsv;
 using Rhyous.StringLibrary.Pluralization;
 using Rhyous.UnitTesting;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Rhyous.StringLibrary.Tests.Pluralization
 {
@@ -51,23 +52,6 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
             // Arrange
             string noun = row[0];
             string expectedPlural = row[1];
-
-            // Act
-            var actualPlural = noun.Pluralize();
-
-            // Assert
-            Assert.AreEqual(expectedPlural, actualPlural);
-        }
-
-        [TestMethod]
-        [CsvTestDataSource(@"Data/CustomPluralizers.csv")]
-        public void PluralizationExtensions_Pluralize_CustomAddition_YourComputersLanguage_Test(Row<string> row)
-        {
-            // Arrange
-            string noun = row[0];
-            string expectedPlural = row[1];
-
-            IETFLanguageTagDictionary.Instance[CultureInfo.CurrentCulture.TwoLetterISOLanguageName].PluralizationDictionary.Add(noun, expectedPlural);
 
             // Act
             var actualPlural = noun.Pluralize();

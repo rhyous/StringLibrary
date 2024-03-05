@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhyous.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Serialization;
 
 namespace Rhyous.StringLibrary.Tests.Expression
@@ -20,7 +21,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
             var a = new ModelA { Id = 1, Name = "ABC", Date = new DateTime(2017, 1, 1), Guid = new Guid("{C1AA6176-425D-4981-BE4A-8F5C459E0FF9}") };
             var prop = row.Property;
             var type = Type.GetType(row.Type);
-            var value = row.Value.ToType(type);
+            var value = row.Value.ToType(type, null, new CultureInfo("en-US"));
             var method = row.Method;
             var expectedExpression = row.ExpectedExpression;
             var expectedResult = row.ExpectedResult.To<bool>();
@@ -42,7 +43,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
             var a = new ModelA { Id = 1, Name = "ABC", Date = new DateTime(2017, 1, 1), Guid = new Guid("{C1AA6176-425D-4981-BE4A-8F5C459E0FF9}") };
             var prop = "Date";
             var type = typeof(DateTime);
-            var value = "01/01/2017".ToType(type);
+            var value = "01/01/2017".ToType(type, null, new CultureInfo("en-US"));
             var method = "le";
             var expectedExpression = "e => (e.Date <= 1/1/2017 12:00:00 AM)";
             var expectedResult = true;
