@@ -62,7 +62,7 @@ jobs:
       - name: Get Build Number with base offset
         uses: mlilback/build-number@v1
         with:
-          base: -9
+          base: -10
           run-id: ${{github.run_number}}
         
       # Build - Main
