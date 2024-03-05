@@ -38,6 +38,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Set Locale
+        run: |
+          sudo locale-gen en_US.UTF-8
+          echo "LC_ALL=en_US.UTF-8" >> $GITHUB_ENV
+          echo "LANG=en_US.UTF-8" >> $GITHUB_ENV
+          echo "LANGUAGE=en_US:en" >> $GITHUB_ENV
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
@@ -55,7 +62,7 @@ jobs:
       - name: Get Build Number with base offset
         uses: mlilback/build-number@v1
         with:
-          base: -8
+          base: -9
           run-id: ${{github.run_number}}
         
       # Build - Main
