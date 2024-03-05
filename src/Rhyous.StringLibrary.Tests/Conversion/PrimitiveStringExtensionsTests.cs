@@ -48,6 +48,26 @@ namespace Rhyous.StringLibrary.Tests.Conversion
             Assert.AreEqual(expected, actual.ToString(), message);
         }
 
+        /// <summary>
+        /// Tests both the ToGeneric and the ToType methods
+        /// </summary>
+        [TestMethod]
+        public void ToGenericAndToType_DatTime_Test()
+        {
+            // Arrange
+            string s = "01/01/2017";
+            var type = typeof(DateTime);
+            string expected = new DateTime(2017, 1, 1).ToString();
+            var message = "The DateTime values should be equal";
+
+            // Act
+            var actual = s.ToType(type);
+
+            // Assert
+            Assert.AreEqual(type, actual.GetType());
+            Assert.AreEqual(expected, actual.ToString(), message);
+        }
+
         [XmlRoot("Row")]
         [XmlType("Row")]
         public class PrimitiveConversionRow

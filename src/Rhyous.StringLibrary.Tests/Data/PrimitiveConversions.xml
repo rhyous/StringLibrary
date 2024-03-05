@@ -234,10 +234,4 @@
     <Expected>0bf5eba3-3823-481d-927d-f4c31968faf7</Expected>
     <Message></Message>
   </Row>
-  <Row>
-    <String>01/01/2017</String>
-    <Type>System.DateTime</Type>
-    <Expected>1/1/2017 12:00:00 AM</Expected>
-    <Message></Message>
-  </Row>
 </Rows>
