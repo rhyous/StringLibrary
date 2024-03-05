@@ -31,7 +31,7 @@ namespace Rhyous.UnitTesting
         public IEnumerable<object[]> GetData(MethodInfo methodInfo)
         {
             if (!File.Exists(_File))
-                throw new FileNotFoundException($"Could not find csv file: {_File}.");
+                throw new FileNotFoundException($"Could not find csv file: {_File}. Searched using working directory: {Path.Combine(Directory.GetCurrentDirectory())}.");
 
             var csv = new Csv(_File);
             foreach (var row in csv.Rows)

@@ -38,7 +38,7 @@ namespace Rhyous.UnitTesting
         public IEnumerable<object[]> GetData(MethodInfo methodInfo)
         {
             if (!File.Exists(_File))
-                throw new FileNotFoundException($"Could not find Xml file: {_File}.");
+                throw new FileNotFoundException($"Could not find Xml file: {_File}. Searched using working directory: {Path.Combine(Directory.GetCurrentDirectory())}.");
             if (!typeof(IEnumerable).IsAssignableFrom(_Type))
                 throw new ArgumentException($"The type {_Type} must implement IEnumerable.");
 

@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Rhyous.StringLibrary.Tests
 {
@@ -62,16 +63,15 @@ namespace Rhyous.StringLibrary.Tests
             const int length = 1000000;
             const int distibution = length / 95;
             int[] margins = new int[9500];
-            for (int j = 0; j < 100; j++)
+            Parallel.For(0, 100, j =>
             {
                 var randomString = CryptoRandomString.GetCryptoRandomBase95String(length);
                 for (int i = 32; i < 127; i++)
                 {
-                    //int count = randomString.Count(c => c == i);
                     int count = CountInstancesOfChar(randomString, (char)i);
                     margins[(j * 95) + i - 32] = count;
                 }
-            }
+            });
             Assert.IsTrue(Math.Abs(margins.Average() - distibution) < .5);
         }
 
