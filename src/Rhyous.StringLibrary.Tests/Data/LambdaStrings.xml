@@ -203,7 +203,7 @@
     <Value>01/01/2017</Value>
     <Type>System.DateTime</Type>
     <Method>eq</Method>
-    <ExpectedExpression>e => (e.Date == 1/1/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date == {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>The Date is 01/01/2017 and should equal value 01/01/2017.</Message>
   </Row>
@@ -212,7 +212,7 @@
     <Value>01/02/2017</Value>
     <Type>System.DateTime</Type>
     <Method>eq</Method>
-    <ExpectedExpression>e => (e.Date == 1/2/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date == {0})</ExpectedExpression>
     <ExpectedResult>false</ExpectedResult>
     <Message>The Date is 01/01/2017 and should not equal value 01/02/2017.</Message>
   </Row>
@@ -222,7 +222,7 @@
     <Value>01/02/2017</Value>
     <Type>System.DateTime</Type>
     <Method>gt</Method>
-    <ExpectedExpression>e => (e.Date > 1/2/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date > {0})</ExpectedExpression>
     <ExpectedResult>false</ExpectedResult>
     <Message>Date is 01/01/2017 which is not greater than 01/02/2017.</Message>
   </Row>
@@ -231,7 +231,7 @@
     <Value>12/31/2016</Value>
     <Type>System.DateTime</Type>
     <Method>gt</Method>
-    <ExpectedExpression>e => (e.Date > 12/31/2016 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date > {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is greater than 12/31/2016.</Message>
   </Row>
@@ -241,7 +241,7 @@
     <Value>01/02/2017</Value>
     <Type>System.DateTime</Type>
     <Method>ge</Method>
-    <ExpectedExpression>e => (e.Date >= 1/2/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date >= {0})</ExpectedExpression>
     <ExpectedResult>false</ExpectedResult>
     <Message>Date is 01/01/2017 which is not greater than or equal to 01/02/2017.</Message>
   </Row>
@@ -250,7 +250,7 @@
     <Value>12/31/2016</Value>
     <Type>System.DateTime</Type>
     <Method>ge</Method>
-    <ExpectedExpression>e => (e.Date >= 12/31/2016 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date >= {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is greater than or equal to 12/31/2016.</Message>
   </Row>
@@ -259,7 +259,7 @@
     <Value>01/01/2017</Value>
     <Type>System.DateTime</Type>
     <Method>ge</Method>
-    <ExpectedExpression>e => (e.Date >= 1/1/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date >= {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is greater than or equal to 01/01/2017.</Message>
   </Row>
@@ -269,7 +269,7 @@
     <Value>01/02/2017</Value>
     <Type>System.DateTime</Type>
     <Method>lt</Method>
-    <ExpectedExpression>e => (e.Date &lt; 1/2/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date &lt; {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is less than 01/02/2017.</Message>
   </Row>
@@ -278,7 +278,7 @@
     <Value>12/31/2016</Value>
     <Type>System.DateTime</Type>
     <Method>lt</Method>
-    <ExpectedExpression>e => (e.Date &lt; 12/31/2016 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date &lt; {0})</ExpectedExpression>
     <ExpectedResult>false</ExpectedResult>
     <Message>Date is 01/01/2017 which is not less than 12/31/2016.</Message>
   </Row>
@@ -288,7 +288,7 @@
     <Value>01/02/2017</Value>
     <Type>System.DateTime</Type>
     <Method>le</Method>
-    <ExpectedExpression>e => (e.Date &lt;= 1/2/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date &lt;= {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is less than or equal to 01/02/2017.</Message>
   </Row>
@@ -297,7 +297,7 @@
     <Value>12/31/2016</Value>
     <Type>System.DateTime</Type>
     <Method>le</Method>
-    <ExpectedExpression>e => (e.Date &lt;= 12/31/2016 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date &lt;= {0})</ExpectedExpression>
     <ExpectedResult>false</ExpectedResult>
     <Message>Date is 01/01/2017 which is not less than or equal to 12/31/2016.</Message>
   </Row>
@@ -306,7 +306,7 @@
     <Value>01/01/2017</Value>
     <Type>System.DateTime</Type>
     <Method>le</Method>
-    <ExpectedExpression>e => (e.Date &lt;= 1/1/2017 12:00:00 AM)</ExpectedExpression>
+    <ExpectedExpression>e => (e.Date &lt;= {0})</ExpectedExpression>
     <ExpectedResult>true</ExpectedResult>
     <Message>Date is 01/01/2017 which is less than or equal to 01/01/2017.</Message>
   </Row>

@@ -24,6 +24,8 @@ namespace Rhyous.StringLibrary.Tests.Expression
             var value = row.Value.ToType(type, null, new CultureInfo("en-US"));
             var method = row.Method;
             var expectedExpression = row.ExpectedExpression;
+            if (expectedExpression.Contains("{0}"))
+                expectedExpression = string.Format(expectedExpression, value);
             var expectedResult = row.ExpectedResult.To<bool>();
             var message = row.Message;
 
@@ -45,7 +47,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
             var type = typeof(DateTime);
             var value = "01/01/2017".ToType(type, null, new CultureInfo("en-US"));
             var method = "le";
-            var expectedExpression = "e => (e.Date <= 1/1/2017 12:00:00 AM)";
+            var expectedExpression = $"e => (e.Date <= {value})";
             var expectedResult = true;
             var message = "Date is 01/01/2017 which is not less than or equal to 12/31/2016.";
 
