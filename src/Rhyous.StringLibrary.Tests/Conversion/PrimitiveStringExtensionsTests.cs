@@ -29,7 +29,7 @@ namespace Rhyous.StringLibrary.Tests.Conversion
         /// Tests both the ToGeneric and the ToType methods
         /// </summary>
         [TestMethod]
-        [XmlTestDataSource(typeof(PrimitiveConversionRows), @"Data\PrimitiveConversions.xml", "Type,String")]
+        [XmlTestDataSource(typeof(PrimitiveConversionRows), @"Data/PrimitiveConversions.xml", "Type,String")]
         public void ToGenericAndToTypeTest(PrimitiveConversionRow row)
         {
             // Arrange

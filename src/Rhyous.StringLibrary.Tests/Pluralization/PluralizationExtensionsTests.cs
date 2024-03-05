@@ -15,7 +15,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         #region Default to the computers localization. 
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/IrregularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Irregular_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
@@ -30,7 +30,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/RegularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Regular_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
@@ -45,7 +45,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
         
         [TestMethod]
-        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        [CsvTestDataSource(@"Data/AlphabetAndNumbers.csv")]
         public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
@@ -60,7 +60,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        [CsvTestDataSource(@"Data/CustomPluralizers.csv")]
         public void PluralizationExtensions_Pluralize_CustomAddition_YourComputersLanguage_Test(Row<string> row)
         {
             // Arrange
@@ -79,7 +79,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
 
         #region en-US
         [TestMethod]
-        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/IrregularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Irregular_enUS_Test(Row<string> row)
         {
             // Arrange
@@ -94,7 +94,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/RegularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Regular_enUS_Test(Row<string> row)
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        [CsvTestDataSource(@"Data/AlphabetAndNumbers.csv")]
         public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enUS_Test(Row<string> row)
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        [CsvTestDataSource(@"Data/CustomPluralizers.csv")]
         public void PluralizationExtensions_Pluralize_CustomAddition_enUS_Test(Row<string> row)
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
 
         #region en-GB
         [TestMethod]
-        [CsvTestDataSource(@"Data\IrregularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/IrregularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Irregular_enGB_Test(Row<string> row)
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\RegularEnglishNouns.csv")]
+        [CsvTestDataSource(@"Data/RegularEnglishNouns.csv")]
         public void PluralizationExtensions_Pluralize_Regular_enGB_Test(Row<string> row)
         {
             // Arrange
@@ -173,7 +173,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\AlphabetAndNumbers.csv")]
+        [CsvTestDataSource(@"Data/AlphabetAndNumbers.csv")]
         public void PluralizationExtensions_Pluralize_AlphabetAndNumbers_enGB_Test(Row<string> row)
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [CsvTestDataSource(@"Data\CustomPluralizers.csv")]
+        [CsvTestDataSource(@"Data/CustomPluralizers.csv")]
         public void PluralizationExtensions_Pluralize_CustomAddition_enGB_Test(Row<string> row)
         {
             // Arrange

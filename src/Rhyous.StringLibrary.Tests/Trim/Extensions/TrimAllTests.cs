@@ -12,7 +12,7 @@ namespace Rhyous.StringLibrary.Tests
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        [XmlTestDataSource(typeof(ParameterValueStringRows), @"Data\ParameterValueStrings.xml", "Value")]
+        [XmlTestDataSource(typeof(ParameterValueStringRows), @"Data/ParameterValueStrings.xml", "Value")]
         public void TestTrimAll(ParameterValueStringRow row)
         {
             // Arrange

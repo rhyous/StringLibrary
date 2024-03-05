@@ -22,28 +22,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\AlphabetAndNumbers.csv">
+    <None Update="Data/AlphabetAndNumbers.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\ConcatData.csv">
+    <None Update="Data/ConcatData.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\CustomPluralizers.csv">
+    <None Update="Data/CustomPluralizers.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\IrregularEnglishNouns.csv">
+    <None Update="Data/IrregularEnglishNouns.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\LambdaStrings.xml">
+    <None Update="Data/LambdaStrings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\ParameterValueStrings.xml">
+    <None Update="Data/ParameterValueStrings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\PrimitiveConversions.xml">
+    <None Update="Data/PrimitiveConversions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\RegularEnglishNouns.csv">
+    <None Update="Data/RegularEnglishNouns.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

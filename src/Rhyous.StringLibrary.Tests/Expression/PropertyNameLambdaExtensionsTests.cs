@@ -13,7 +13,7 @@ namespace Rhyous.StringLibrary.Tests.Expression
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        [XmlTestDataSource(typeof(LambdaStringRows), @"Data\LambdaStrings.xml", "ExpectedExpression")]
+        [XmlTestDataSource(typeof(LambdaStringRows), @"Data/LambdaStrings.xml", "ExpectedExpression")]
         public void PropertyNameLambdaExtensions_TestToLambda_TypeParams(LambdaStringRow row)
         {
             // Arrange
