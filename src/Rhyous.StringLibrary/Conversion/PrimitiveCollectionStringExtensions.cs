@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace Rhyous.StringLibrary.Conversion
+namespace Rhyous.StringLibrary
 {
     /// <summary>This class provides extension methods for converting a comma-separated string into a list of a specified type.</summary>
     public static class PrimitiveCollectionStringExtensions
