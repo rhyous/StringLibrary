@@ -4,9 +4,9 @@ name: CI - Main
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push events (after pull request completes) but only for the "master" and "vNext" branches
+  # Triggers the workflow on push events (after pull request completes) but only for the "main" branch
   push:
-    branches: [ "master", "vNext" ]
+    branches: [ "main"]
     paths-ignore:
       - '**.md'
       - '**.yml'
@@ -123,5 +123,5 @@ jobs:
  
       # Publish NuGet
       - name: Publish the NuGet package
-        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master' }}
+        if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
         run: dotnet nuget push "**/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
