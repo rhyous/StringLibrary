@@ -38,7 +38,7 @@ namespace Rhyous.StringLibrary.Tests
             const int length = 1000000;
             CryptoRandomString.GetCryptoRandomBase95String(length);
             watch.Stop();
-            Assert.IsTrue(watch.ElapsedMilliseconds < 1000);
+            Assert.IsTrue(watch.ElapsedMilliseconds < 1000, $"Elapsed time: {watch.ElapsedMilliseconds} ms");
         } // Elapsed Milliseconds 320 (it fluxuated a few milliseconds each run) 
 
         [TestMethod]
