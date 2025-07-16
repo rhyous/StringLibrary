@@ -89,7 +89,7 @@ jobs:
       # Run Unit Tests
       # Add coverlet.collector nuget package to test project - 'dotnet add <TestProject.cspoj> package coverlet'
       - name: Run Tests
-        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage --filter TestCategory!=SkipCI&TestCategory!=Performance
+        run: dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --logger trx --results-directory coverage --filter "TestCategory!=SkipCI&TestCategory!=Performance"
          
       # Install ReportGenerator
       - name: Install ReportGenerator
