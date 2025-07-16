@@ -4,7 +4,6 @@ using Rhyous.EasyCsv;
 using Rhyous.StringLibrary.Pluralization;
 using Rhyous.UnitTesting;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Rhyous.StringLibrary.Tests.Pluralization
 {

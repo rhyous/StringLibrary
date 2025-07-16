@@ -45,7 +45,7 @@ namespace Rhyous.StringLibrary
         };
 
 
-        #region long16, long32, long64 overloads
+        #region long (Int64) overloads
         /// <summary>
         /// This overload specifically handles long. TypeConverter cannot convert a string
         /// that is an double, such as "1.0" to an long. So we first convert it to a double
