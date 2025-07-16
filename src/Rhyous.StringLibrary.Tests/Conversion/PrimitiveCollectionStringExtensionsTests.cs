@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rhyous.StringLibrary.Conversion;
 using Rhyous.UnitTesting;
 using System;
 using System.Globalization;
