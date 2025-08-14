@@ -37,7 +37,7 @@ namespace Rhyous.StringLibrary
         {
             if (string.IsNullOrEmpty(value))
                 return value;
-            if (value.IsQuoted(new[] { quote.ToString() }))
+            if (value.IsQuoted(quote.ToString()))
                 return value;
             return value.Wrap(quote);
         }
@@ -57,7 +57,7 @@ namespace Rhyous.StringLibrary
                 quotes = new[] { "'", "\"" };
             return value.IsWrapped(quotes);
         }
-        
+
         /// <summary>
         /// Escapes quotes in a string.
         /// </summary>

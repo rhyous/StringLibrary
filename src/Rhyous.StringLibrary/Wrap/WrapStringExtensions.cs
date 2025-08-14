@@ -74,7 +74,7 @@ namespace Rhyous.StringLibrary
         }
 
         /// <summary>
-        /// Unwrapse a string. Removes a wrapping string from both front and back.
+        /// Unwraps a string. Removes a wrapping string from both front and back.
         /// </summary>
         /// <param name="value">The string, possibly with quotes.</param>
         /// <param name="wrap">The string that is at both the start and end that should be removed.</param>
@@ -84,13 +84,39 @@ namespace Rhyous.StringLibrary
         {
             if (string.IsNullOrEmpty(value))
                 return value;
-            if (value.Length >= wrap.Length * 2 && value.StartsWith(value) && value.EndsWith(value))
-                value = value.Substring(wrap.Length, value.Length - wrap.Length * 2);
-            return value;
+            var tVal = value.Trim();
+            if (tVal.Length < wrap.Length * 2 || !tVal.StartsWith(wrap) || !tVal.EndsWith(wrap))
+            {
+                return tVal;
+            }
+            if (tVal.Length >= wrap.Length * 2 && tVal.StartsWith(tVal) && tVal.EndsWith(tVal))
+                tVal = tVal.Substring(wrap.Length, tVal.Length - wrap.Length * 2);
+            return tVal;
         }
 
         /// <summary>
-        /// Unwrapse a string. Removes a wrapping string from both front and back.
+        /// Unwraps a string. Removes a wrapping string from both front and back.
+        /// </summary>
+        /// <param name="value">The string, possibly with quotes.</param>
+        /// <param name="wrap">The string that is at both the start and end that should be removed.</param>
+        /// <returns>A string without quotes.</returns>
+        /// <remarks>Should not remove a matching wrapping string unless it is both at the start and the end.</remarks>
+        public static string Unwrap(this string value, char wrap)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            var tVal = value.Trim();
+            if (tVal.Length < 2 || tVal[0] != wrap || tVal[tVal.Length - 1] != wrap)
+            {
+                return tVal;
+            }
+            if (tVal.Length >= 1 * 2 && tVal.StartsWith(tVal) && tVal.EndsWith(tVal))
+                tVal = tVal.Substring(1, tVal.Length - 1 * 2);
+            return tVal;
+        }
+
+        /// <summary>
+        /// Unwraps a string. Removes a wrapping string from both front and back.
         /// </summary>
         /// <param name="value">The string, possibly with quotes.</param>
         /// <param name="prefix">The string that is at the start that should be removed.</param>
@@ -101,9 +127,36 @@ namespace Rhyous.StringLibrary
         {
             if (string.IsNullOrEmpty(value))
                 return value;
-            if (value.Length >= postfix.Length + prefix.Length &&  value.StartsWith(prefix) && value.EndsWith(postfix))
-                value = value.Substring(prefix.Length, value.Length - postfix.Length - prefix.Length);
-            return value;
+            var tVal = value.Trim();
+            if (tVal.Length < prefix.Length + postfix.Length || !tVal.StartsWith(prefix) || !tVal.EndsWith(postfix))
+            {
+                return tVal;
+            }
+            if (tVal.Length >= postfix.Length + prefix.Length && tVal.StartsWith(prefix) && tVal.EndsWith(postfix))
+                tVal = tVal.Substring(prefix.Length, tVal.Length - postfix.Length - prefix.Length);
+            return tVal;
+        }
+
+        /// <summary>
+        /// Unwraps a string. Removes a wrapping string from both front and back.
+        /// </summary>
+        /// <param name="value">The string, possibly with quotes.</param>
+        /// <param name="prefix">The string that is at the start that should be removed.</param>
+        /// <param name="postfix">The string that is at the end that should be removed.</param>
+        /// <returns>A string without quotes.</returns>
+        /// <remarks>Should not remove a matching wrapping string unless it is both at the start and the end.</remarks>
+        public static string Unwrap(this string value, char prefix, char postfix)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+            var tVal = value.Trim();
+            if (tVal.Length < 2 || tVal[0] != prefix || tVal[tVal.Length - 1] != postfix)
+            {
+                return tVal;
+            }
+            if (tVal.Length >= 2 && tVal[0] == prefix && tVal[tVal.Length - 1] == postfix)
+                tVal = tVal.Substring(1, tVal.Length - 2);
+            return tVal;
         }
     }
 }
