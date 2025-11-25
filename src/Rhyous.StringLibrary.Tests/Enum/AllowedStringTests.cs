@@ -24,7 +24,6 @@ namespace Rhyous.StringLibrary.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void AllowedString_Constructor_NullAllowedValues_Test()
         {
             // Arrange
@@ -33,7 +32,7 @@ namespace Rhyous.StringLibrary.Tests
 
             // Act
             // Assert
-            new AllowedString(vowels, defaultValue);
+            Assert.Throws<ArgumentNullException>(() => new AllowedString(vowels, defaultValue));
         }
 
         [TestMethod]
@@ -52,7 +51,6 @@ namespace Rhyous.StringLibrary.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValueNotAllowedException))]
         public void AllowedString_SetValue_Allowed_Test()
         {
             // Arrange
@@ -68,7 +66,6 @@ namespace Rhyous.StringLibrary.Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValueNotAllowedException))]
         public void AllowedString_SetValue_NotAllowed_Test()
         {
             // Arrange
@@ -78,7 +75,7 @@ namespace Rhyous.StringLibrary.Tests
 
             // Act
             // Assert
-            allowedString.Value = "B";
+            Assert.Throws<ValueNotAllowedException>(() => allowedString.Value = "B");
         }
     }
 }

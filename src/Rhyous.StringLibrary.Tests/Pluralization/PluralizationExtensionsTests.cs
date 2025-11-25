@@ -218,7 +218,6 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
         }
 
         [TestMethod]
-        [ExpectedException(typeof(LanguagePluralizerMissingException))]
         public void PluralizationExtensions_Pluralize_MissingPluralizerException_Test()
         {
             // Arrange
@@ -226,7 +225,7 @@ namespace Rhyous.StringLibrary.Tests.Pluralization
 
             // Act
             // Assert
-            var actualPlural = noun.Pluralize(null, new CultureInfo("es-ES"));
+            Assert.Throws<LanguagePluralizerMissingException>(() => noun.Pluralize(null, new CultureInfo("es-ES")));
         }
         #endregion
     }

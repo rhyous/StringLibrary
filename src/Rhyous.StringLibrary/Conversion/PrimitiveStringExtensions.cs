@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 
 namespace Rhyous.StringLibrary
 {
@@ -24,6 +23,12 @@ namespace Rhyous.StringLibrary
         /// <returns>A conversion to type T.</returns>
         public static T To<T>(this string s, T defaultValue = default(T), CultureInfo cultureInfo = null)
         {
+            if (s == null)
+                return defaultValue;
+            if (string.IsNullOrWhiteSpace(s) && typeof(T) != typeof(string) && Nullable.GetUnderlyingType(typeof(T)) == null)
+            {
+                return defaultValue;
+            }
             cultureInfo = cultureInfo ?? CultureInfo.CurrentCulture ?? CultureInfo.InvariantCulture;
             if (CustomConverterTypes.Contains(typeof(T)) && s.Count(c => c == cultureInfo.NumberFormat.NumberDecimalSeparator[0]) == 1)
                 return (T)System.Convert.ChangeType(ToLong(s, 0L, cultureInfo), typeof(T)); // First convert to long

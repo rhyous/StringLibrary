@@ -34,9 +34,11 @@ namespace Rhyous.StringLibrary
             {
                 if (AllowedValues.Contains(value))
                     _Value = value;
-                throw new ValueNotAllowedException($"Value ${value} is not allowed. Allowed values include: {string.Join(", ", AllowedValues)}", nameof(value));
+                else
+                    throw new ValueNotAllowedException($"Value ${value} is not allowed. Allowed values include: {string.Join(", ", AllowedValues)}", nameof(value));
             }
-        } private string _Value;
+        }
+        private string _Value;
 
         /// <summary>
         /// A list of allowed strings.

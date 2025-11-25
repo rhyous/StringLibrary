@@ -11,22 +11,19 @@ namespace Rhyous.StringLibrary.Tests.Comparison
 
         #region Argument null exception tests
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ConcatinizationExtensions_NullThrows_Test()
         {
-            StringConcat.WithSeparator('/', null);
+            Assert.Throws<ArgumentNullException>(() => StringConcat.WithSeparator('/', null));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ConcatinizationExtensions_EmptyThrows_Test()
         {
-            StringConcat.WithSeparator('/', new string[] { });
+            Assert.Throws<ArgumentNullException>(() => StringConcat.WithSeparator('/', new string[] { }));
         }
 
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ConcatinizationExtensions_ThreeString_FirstNull_Test()
         {
             string s1 = null;
@@ -34,12 +31,10 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             var s3 = "test3";
             var separator = '/';
 
-            StringConcat.WithSeparator(separator, new[] { s1, s2, s3 });
+            Assert.Throws<ArgumentNullException>(() => StringConcat.WithSeparator(separator, new[] { s1, s2, s3 }));
         }
 
         [TestMethod]
-
-        [ExpectedException(typeof(ArgumentNullException))]
         public void ConcatinizationExtensions_ThreeString_MiddleNull_Test()
         {
             var s1 = "test1";
@@ -47,7 +42,7 @@ namespace Rhyous.StringLibrary.Tests.Comparison
             var s3 = "test3";
             var separator = '/';
 
-            StringConcat.WithSeparator(separator, new[] { s1, s2, s3 });
+            Assert.Throws<ArgumentNullException>(() => StringConcat.WithSeparator(separator, new[] { s1, s2, s3 }));
         }
         #endregion
 
